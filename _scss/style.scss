@@ -1,0 +1,73 @@
+@import "bourbon/bourbon";
+@import "neat/neat";
+
+@import "variables";
+@import "fonts";
+
+body {
+    font-family: 'Arvo', sans-serif;
+    background: #f4f4f4 $bg-image fixed;
+    font-size: 16px;
+}
+
+a {
+    color: #006977;
+    text-decoration: none;
+    
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.container {
+    @include outer-container;
+}
+
+.header {
+    @include fill-parent;
+    height: 100px;
+    box-shadow: 0px 60px 100px -46px rgba(0, 0, 0, 0.5);
+
+    h1 {
+        font: 42px/100px "Arvo", serif normal;
+        text-align: center;
+
+        a {
+            color: black;
+        }
+    }
+}
+
+.content {
+    h2 {
+        font-family: "Quicksand", sans-serif;
+    }
+}
+
+
+.footer {
+    margin-bottom: 20px;
+
+    .contact {
+        text-align: center;
+        margin: 1em 0;
+        font-style: italic;
+
+    }
+    .social-icons a {
+        display: inline-block;
+        margin-right: 1em;
+        margin-bottom: 1em;
+        color: #668999;
+        text-align: center;
+    }
+}
+
+
+html.flexbox .social-icons {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
