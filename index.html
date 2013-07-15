@@ -4,10 +4,10 @@ title: Stianj.com
 
 projects: [
 {
-    "title":        "Windwill",
-    "image":        "images/windwill_preview@200px.png",
-    "description":  "An HTML5 Game written for the Bacon Game Jam in september 2012.",
-    "link":         "http://windwill.co/"
+    "title":        "TUNL-MNTN-WTER",
+    "image":        "images/tunlmntnwter_preview@200px.png",
+    "description":  "WebGL demo made for Solskogen 2013. 5th place in newschool compo.",
+    "link":         "http://stianj.com/skog/"
 },
 {
     "title":        "Wikipendium",
@@ -16,22 +16,28 @@ projects: [
     "link":         "http://wikipendium.no/"
 },
 {
+    "title":        "Windwill",
+    "image":        "images/windwill_preview@200px.png",
+    "description":  "An HTML5 Game written for the Bacon Game Jam in september 2012.",
+    "link":         "http://windwill.co/"
+},
+{
     "title":        "KINK demo",
     "image":        "images/kink_preview@200px.png",
     "description":  "A WebGL demo made before going to BEKK Robocup 2013. Written in javascript using THREE.js.",
     "link":         "http://kinkdemo.com/"
 },
 {
-    "title":        "Guide to DataGK [no]",
-    "image":        "images/datagk_preview@200px.png",
-    "description":  "A Web 1.0 like guide to passing the <em>Intro to computers</em> exam.",
-    "link":         "http://datagk.stianj.com/"
-},
-{
     "title":        "hip.",
     "image":        "images/hip_preview@200px.png",
     "description":  "For displaying large type in the browser.",
     "link":         "http://hip.stianj.com/"
+},
+{
+    "title":        "Guide to DataGK [no]",
+    "image":        "images/datagk_preview@200px.png",
+    "description":  "A Web 1.0 like guide to passing the <em>Intro to computers</em> exam.",
+    "link":         "http://datagk.stianj.com/"
 },
 {
     "title":        "Honeycomb",
@@ -43,8 +49,7 @@ projects: [
 ---
 
 <div id="home">
-    {% for item in page.projects %}
-        <div class=item>
+    {% for item in page.projects %}<div class=item>
             <a href="{{ item.link }}">
                 <div class=image>
                     <img src="{{ item.image }}" alt="">
@@ -52,6 +57,5 @@ projects: [
                 <h2>{{ item.title }}</h2>
             </a>
             <p>{{ item.description }}</p>
-        </div>
-    {% endfor %}
+        </div>{% endfor %}
 </div>

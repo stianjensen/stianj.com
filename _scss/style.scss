@@ -6,8 +6,12 @@
 
 body {
     font-family: 'Arvo', sans-serif;
-    background: #f4f4f4 $bg-image fixed;
     font-size: 16px;
+    color: #222;
+}
+
+body, .header {
+    background: #f4f4f4 $bg-image fixed;
 }
 
 a {
@@ -24,12 +28,20 @@ a {
 }
 
 .header {
+    z-index: 100;
+    height: 60px;
+    box-shadow: 0px 60px 90px -26px rgba(0, 0, 0, 0.5);
     @include fill-parent;
-    height: 100px;
-    box-shadow: 0px 60px 100px -46px rgba(0, 0, 0, 0.5);
+
+    @include media($desktop-up) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
 
     h1 {
-        font: 42px/100px "Arvo", serif normal;
+        font: 35px/60px "Arvo", serif normal;
         text-align: center;
 
         a {
@@ -39,8 +51,79 @@ a {
 }
 
 .content {
-    h2 {
-        font-family: "Quicksand", sans-serif;
+    padding: 2em 4%;
+}
+
+#home {
+    @include outer-container;
+
+    @include media($desktop-up) {
+        padding-top: 100px;
+    }
+
+    .item {
+        padding-bottom: .7em;
+
+        @include media($mobile-only) {
+            @include span-columns(4);
+            margin: .7em 0;
+            border-bottom: 1px dashed #555;
+
+            &:last-child {
+                border-bottom: none;    
+            }
+        }
+        @include media($tablet-up) {
+            display: inline-block;
+            text-align: center;
+            vertical-align: top;
+        }
+        @include media($small-tablet-only) {
+            width: 48%;    
+            margin-right: 4%;
+
+            &:nth-child(2n) {
+                margin-right: 0;
+            }
+        }
+        @include media($big-tablet-up) {
+            width: 30%;
+            margin-right: 5%;
+
+            &:nth-child(3n) {
+                margin-right: 0;
+            }
+        }
+
+        .image {
+            border-radius: 50%;
+            box-shadow: inset 5px 5px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+
+            @include media($tablet-up) {
+                width: 75%;
+                margin: 0 auto;
+                position: relative;
+            }
+            @include media($mobile-only) {
+                @include span-columns(1);
+            }
+
+            img {
+                width: 100%;
+                border-radius: 50%;
+                z-index: -1;
+                display: block;
+                position: relative;
+            }
+        }
+
+        h2 {
+            font-family: "Quicksand", sans-serif;
+        }
+        p {
+            font-style: italic;
+        }
     }
 }
 
