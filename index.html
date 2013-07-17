@@ -51,8 +51,7 @@ projects: [
 <div id="home">
     {% for item in page.projects %}<div class=item>
             <a href="{{ item.link }}">
-                <div class=image>
-                    <img src="{{ item.image }}" alt="">
+                <div class=image style="background-image:url('{{ item.image }}')">
                 </div>
                 <h2>{{ item.title }}</h2>
             </a>
