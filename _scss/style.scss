@@ -171,13 +171,22 @@ h2.subtitle {
         float: right;
         width: 20%;
         border-radius: 50%;
+        @include media($tablet-up) {
+            margin-right: 5%;
+        }
     }
     .left {
-        width: 70%;
-        float: left;
+        @include media($tablet-up) {
+            width: 70%;
+            float: left;
+        }
 
         h2 {
             margin: 1.5em 0 1em 30%;
+
+            @include media($mobile-only) {
+                margin-left: 0;
+            }
         }
     }
 
@@ -186,17 +195,27 @@ h2.subtitle {
         overflow: hidden;
 
         dt {
-            float: left;
-            width: 20%;
-            clear: left;
             margin-bottom: 10px;
+
+            @include media($tablet-up) {
+                float: left;
+                width: 20%;
+                clear: left;
+            }
         }
         dd {
-            float: left;
-            max-width: 70%;
-            margin-left: 10%;
-            margin-bottom: 15px;
             font-size: .9em;
+            margin-bottom: 15px;
+
+            @include media($tablet-up) {
+                float: left;
+                max-width: 70%;
+                margin-left: 10%;
+            }
+            @include media($mobile-only) {
+                padding-bottom: 5px;
+                border-bottom: 1px solid #555;
+            }
 
             p {
                 font-family: verdana, sans-serif;
@@ -208,8 +227,11 @@ h2.subtitle {
         }
     }
     .right {
-        width: 30%;
-        float: left;
+        @include media($tablet-up) {
+            width: 30%;
+            float: left;
+        }
+
         .box {
             background: rgba(31, 113, 139, 0.9);
             color: white;
