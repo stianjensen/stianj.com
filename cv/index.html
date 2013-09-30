@@ -1,0 +1,167 @@
+---
+layout: cv
+title: CV - Stianj.com
+
+education: [
+{
+    "title": "NTNU",
+    "subtitle": "Masters degree in computer science",
+    "startDate": 2011,
+    "endDate": "ongoing"
+},
+{
+    "title": "Trondheim Katedralskole",
+    "subtitle": "Secondary school, exact sciences",
+    "startDate": 2009,
+    "endDate": 2010
+},
+{
+    "title": "Heimdal VGS",
+    "subtitle": "Secondary school, exact sciences",
+    "startDate": 2007,
+    "endDate": 2009
+}
+]
+
+work: [
+{
+    "title": "The Music Garden at Ringve Museum",
+    "subtitle": "iPad app for showcasing Ringve Museums music catalog and instruments",
+    "startDate": "05. 2012",
+    "endDate": "07. 2013"
+},
+{
+    "title": "[Panes Software ANS](http://panes.no/)",
+    "subtitle": "Co-founder",
+    "startDate": "02.2011",
+    "endDate": "ongoing"
+},
+{
+    "title": "Norges Bridgeforbund",
+    "subtitle": "Computer setup and tournament scoring at the Norwegian Bridge Festival",
+    "startDate": 2009,
+    "endDate": 2013
+},
+{
+    "title": "Civil conscription worker",
+    "subtitle": "Ringve Music Museum",
+    "startDate": 2010,
+    "endDate": 2011
+}
+]
+
+projects: [
+{
+    "title": "[Composite](http://www.getcomposite.com/)",
+    "subtitle": "An iPhone app for prototyping apps with photoshop, by Panes Software.",
+    "startDate": 2013
+},
+{
+    "title": "[TUNL-MNTN-WTER](http://stianj.com/skog/)",
+    "subtitle": "WebGL demo made for Solskogen demo party 2013. Pronounced 'tunnel mountain water train'.",
+    "startDate": 2013
+},
+{
+    "title": "[Wikipendium.no](http://wikipendium.no/)",
+    "subtitle": "Compendiums for university courses, that anyone can edit.",
+    "startDate": "01. 2013",
+    "endDate": "ongoing"
+},
+{
+    "title": "Capra code challenge",
+    "subtitle": "Capra consulting hosted a 24-hour hacking challenge where the goal was to develop a mobile-first application for TINE SA. Our solution was developed with django for backend using a REST API provided from TINE SA, and jquery-mobile for frontend.",
+    "startDate": 2013
+},
+{
+    "title": "BEKK Robocup",
+    "subtitle": "Part of the winning team of BEKK RoboCup 2013. The contest involved programming Microsoft Kinect and LEGO Mindstorms.",
+    "startDate": 2013
+},
+]
+---
+
+
+<div id="home" class=cv>
+    <img src=/images/me.jpg class=me>
+
+    <div class=contact>
+        <dl>
+            <dt>Born:</dt>
+            <dd>16.07.1991</dd>
+            <dt>Address:</dt>
+            <dd>Dronningens gt. 27, 7012 Trondheim</dd>
+            <dt>Email:</dt>
+            <dd><a href="mailto:me@stianj.com">me@stianj.com</a></dd>
+            <dt>Phone:</dt>
+            <dd>+47 482 72 582</dd>
+            <dt>Github:</dt>
+            <dd><a href="http://github.com/stianjensen/">@stianjensen</a></dd>
+        </dl>
+    </div>
+
+    <div class=left>
+    <h2>Education</h2>
+    <dl>
+    {% for item in page.education %}
+        <dt>
+        {{ item.startDate }}
+        {% if item.endDate %}
+            – {{ item.endDate }}
+        {% endif %}
+        </dt>
+        <dd>
+            <strong>{{ item.title }}</strong>
+            <p>{{ item.subtitle | markdownify }}</p>
+        </dd>{% endfor %}
+    </dl>
+    <h2>Experience</h2>
+    <dl>
+    {% for item in page.work %}
+        <dt>
+        {{ item.startDate }}
+        {% if item.endDate %}
+            – {{ item.endDate }}
+        {% endif %}
+        </dt>
+        <dd>
+            <strong>{{ item.title | markdownify }}</strong>
+            <p>{{ item.subtitle | markdownify }}</p>
+        </dd>{% endfor %}
+    </dl>
+    <h2>Projects</h2>
+    <dl>
+    {% for item in page.projects %}
+        <dt>
+        {{ item.startDate }}
+        {% if item.endDate %}
+            – {{ item.endDate }}
+        {% endif %}
+        </dt>
+        <dd>
+            <strong>{{ item.title | markdownify }}</strong>
+            <p>{{ item.subtitle | markdownify }}</p>
+        </dd>{% endfor %}
+    </dl>
+    <p><em>Full list of projects on <a href="http://stianj.com/">Stianj.com</a></em></p>
+</div>
+<div class=right>
+    <div class=box>
+        <h3>Skills</h3>
+        <ul>
+            <li>Javascript</li>
+            <li>Python – Django</li>
+            <li>PHP</li>
+            <li>HTML</li>
+            <li>CSS/SASS</li>
+            <li>iOS</li>
+            <li>Git</li>
+            <li>Vim</li>
+            <li>Photoshop</li>
+        </ul>
+    </div>
+    <div class=box>
+        <h3>References</h3>
+        <p>Upon request</p>
+
+</div>
+</div>

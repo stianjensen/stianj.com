@@ -1,4 +1,7 @@
 @import "bourbon/bourbon";
+
+$max-width: em(980);
+
 @import "neat/neat";
 
 @import "variables";
@@ -38,7 +41,20 @@ a {
         left: 0;
         right: 0;
     }
+    
+    .inner-header {
+        max-width: 980px;
+        position: relative;
+        margin: 0 auto;
+    }
 
+    a.cv-link {
+        float: right;
+        display: block;
+        line-height: 60px;
+        padding-right: 20px;
+        font-size: 1.2em;
+    }
     h1 {
         font: 35px/60px "Arvo", serif normal;
         text-align: center;
@@ -46,6 +62,15 @@ a {
         a {
             color: black;
         }
+    }
+}
+
+h2.subtitle {
+    text-align: center;
+    margin: 1em 0;
+
+    @include media($desktop-up) {
+        padding-top: 70px;
     }
 }
 
@@ -126,6 +151,74 @@ a {
     }
 }
 
+.cv {
+    &#home {
+        padding-top: 0;
+    }
+
+    h2 {
+        clear: left;
+    }
+    .contact {
+        float: left;
+        width: 70%;
+    }
+    .me {
+        float: right;
+        width: 20%;
+        border-radius: 50%;
+    }
+    .left {
+        width: 70%;
+        float: left;
+
+        h2 {
+            margin: 1.5em 0 1em 30%;
+        }
+    }
+
+    dl {
+        clear: left;
+        overflow: hidden;
+
+        dt {
+            float: left;
+            width: 20%;
+            clear: left;
+            margin-bottom: 10px;
+        }
+        dd {
+            float: left;
+            max-width: 70%;
+            margin-left: 10%;
+            margin-bottom: 15px;
+            font-size: .95em;
+        }
+        strong {
+            font-weight: normal;
+            font-size: 1.25em;
+        }
+    }
+    .right {
+        width: 30%;
+        float: left;
+        .box {
+            background: rgba(31, 113, 139, 0.9);
+            color: white;
+            padding: 8px;
+            margin: 1em 0;
+
+            h3 {
+                border-bottom: 1px solid white;
+                margin-bottom: .5em;
+            }
+        }
+
+        ul {
+            list-style-type: none;
+        }
+    }
+}
 
 .footer {
     margin-bottom: 20px;
