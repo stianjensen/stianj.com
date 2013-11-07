@@ -1,0 +1,3 @@
+[submodule "skog"]
+	path = skog
+	url = git@github.com:sigvef/skog.git
