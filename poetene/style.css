@@ -1,0 +1,41 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,400,700);
+
+body {
+    font-family: 'Lato', Helvetica, arial, sans-serif;
+    max-width: 700px;
+    position: relative;
+    margin: 0 auto;
+    padding: 10px;
+    color: #34495E;
+}
+h1,h2,h3,h4 {
+    color: #2c3e50;
+    font-weight: bold;
+}
+hr {
+    border: 2px solid #bdc3c7;
+}
+ul {
+    list-style-color: #bdc3c7;
+}
+
+#logo {
+    background: #1abc9c;
+    color: white;
+    font-weight: 100;
+    padding: 20px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 5px 5px 0 #16a085;
+    -moz-box-shadow: 5px 5px 0 #16a085;
+    box-shadow: 5px 5px 0 #16a085;
+    font-size: 40px;
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+}
+@media screen and (max-device-width:480px) {
+    #logo {
+        float: none;
+        margin-bottom: 0;
+    }
+}
