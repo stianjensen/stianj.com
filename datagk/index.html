@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+    <META charset=utf-8>
+	<TITLE>Data GK</TITLE>
+	<STYLE>
+		body {
+			font-size: 1.4em;
+			font-family: 'Comic sans ms', serif;
+			color: red;
+			background-color: aqua;
+		}
+		td, th {
+			border: 5px solid lime;
+			padding: 3px;
+		}
+		tr:nth-child(even) {
+			background-color: yellow;
+		}
+		tr:nth-child(odd) {
+			background-color: purple;
+			color: silver;
+		}
+		marquee {
+			text-align: center;
+		}
+        .hd {
+            display: none;
+        }
+		</STYLE>
+		<SCRIPT src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></SCRIPT>
+		<SCRIPT>
+		(function($) {
+ $.fn.blink = function(time) {
+ return this.each(function() {
+     var $that = $(this);
+     setInterval((function(el){return function(){ el.css('visibility',el.css('visibility')=='hidden'?'visible':'hidden');};})($that), time||$that.attr('data-speed')||500);
+     });
+ };
+ })(jQuery);
+ $(function(){
+            $('li').each(function(){
+            	$(this).blink(Math.random()*500);
+            });
+
+        });
+ </SCRIPT>
+</HEAD>
+<BODY>
+    <AUDIO autoplay>
+    <SOURCE src="baby.mp3" type="audio/mpeg"></SOURCE>
+    <SOURCE src="baby.ogg" type="audio/ogg"></SOURCE>
+    </AUDIO>
+<MARQUEE scrollamount="20" behavior="alternate"><H2>Alt man trenger vite for å stå på Data GK-eksamen...</H2></MARQUEE>
+<HR />
+<IMG src="3d_cd.gif" />
+<IMG src="3d_cd.gif" />
+<IMG src="3d_cd.gif" />
+<IMG src="3d_cd.gif" />
+<IMG src="3d_cd.gif" />
+<IMG src="3d_cd.gif" />
+<IMG src="3d_cd.gif" />
+<IMG src="3d_cd.gif" />
+<IMG src="3d_cd.gif" />
+<IMG src="3d_cd.gif" />
+<HR />
+<DIV class="fb-like" data-href="http://stianj.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></DIV>
+<TABLE border="0" width="1100px" cellspacing="10">
+	<TR>
+		<TH width="150px"><MARQUEE behavior="alternate" direction="down">Registre</MARQUEE></TH>
+		<TD>
+				<UL>
+					<LI>PC - Program Counter inneholder adressen til instruksjonen som utføres, eller neste instruksjon som skal utføres. (avhengig av måten maskinen er bygd)</LI>
+					<LI>IR - Instruction Register er der kontrollenheten lagrer instruksjonen som blir gjennomført nå. Den ligger her mens instruksjonen blir dekodet, startet og gjennomført.</LI>
+					<LI>MAR - Memory Address Register inneholder adresse til neste minnelokasjon der vi finner neste instruksjon</LI>
+					<LI>MDR - Memory Data Register inneholder data som skal bli lagret i hovedminne (RAM), eller data som har blitt hentet fra minne. Virker som en buffer så data er klar for prosessor.</LI>
+					<LI>MBR - Memory Buffer Register er et bufferregister mellom minne og prosessor</LI>
+					<LI>LV - Local Variable inneholder pekerverdi.</LI>
+					<LI>SP - Stack Pointer inneholder pekerverdi.</LI>
+					<LI>CPP - Constant Pool Pointer inneholder pekerverdi</LI>
+					<LI>TOS - Top Of Stack skal alltid inneholde ordet på toppen av stakken</LI>
+					<LI>OPC - OpCode register kan fritt brukes.</LI>
+					<LI>H - Holding Register inneholder verdien som skal inn i A-inngangen til ALU.</LI>
+				</UL>
+		</TD>
+	</TR>
+	<TR>
+		<TH><MARQUEE behavior="alternate" direction="down">ALU-flagg</MARQUEE></TH>
+		<TD>
+			<UL>
+				<LI>N - settes når svaret fra ALU er negativt</LI>
+				<LI>Z - settes når svaret fra ALU er 0</LI>
+				<LI>C - carry, når vi f.eks. vil legge sammen 255 og 2 i 8-bit uten fortegnsbit. Svaret vil da bli 0000 0010 (2) som betyr (255+2). Et C-flagg vil da bli lagt til i statusregisteret.</LI>
+				<LI>V - overflow, når vi f.eks. vil legge sammen 127 og 127 i 8-bit med fortegnsbit. Svaret vil da bli 1111 1110 (254) eller i toers-kompliment -2. Et V-flagg vil da bli lagt til i statusregisteret.</LI>
+			</UL>
+		</TD>
+	</TR>
+	<TR>
+		<TH><MARQUEE behavior="alternate" direction="down">Von Neumann</MARQUEE></TH>
+		<TD>
+			Data og instruksjoner er lagret i samme minne og beregninger skjer sekvensielt. Von Neumann-arkitektur gjør det mulig å skrive program som kan endre sin egen programkode.
+			<UL>
+				<LI>ALU - Aritmetisk og logisk enhet som utfører beregningene</LI>
+				<LI>Control Unit - Kontollenhet som dekoder instruksjonene og gjennomfører dem. Kontollenheten kan enten være hard-wired kodet eller inneholde mikroprogram styrt av en mikrokontroller</LI>
+				<LI>Memory - Primærminnet (RAM) inneholder data og instuksjoner</LI>
+				<LI>I/O - Enheter for inn- og utdata</LI>
+			</UL>
+			Moderne datamaskiner har ALU og kontrollenhet på prosessor (CPU), benytter seg av registre, hurtigbuffere, busser og millioner av transistorer, men konseptet er veldig likt. Overføring av data mellom minne og CPU blir i dag sett på som et av de største problemene med Von Neumann-arkitektur.
+		</TD>
+	</TR>
+	<TR>
+		<TH><MARQUEE behavior="alternate" direction="down">MIR</MARQUEE></TH>
+		<TD>
+			MicroInstruction Register
+			<UL>
+				<LI>Addr - peker på neste mikroinstruksjon i instruksjonen</LI>
+				<LI>J - Jam: sier ifra om ALU har flagget neste mikroinstruksjon eller om det kommer hopp (betinget hopp)</LI>
+				<LI>ALU - bestemmer hvilken funksjon ALU skal gjennomføre</LI>
+				<LI>C - inneholder adressen til C-bussen, som blir det samme som adressen til registeret det skal skrives til.</LI>
+				<LI>Mem - sier ifra om det skal gjøres noe med minne</LI>
+				<LI>B - inneholder adressen til B-bussen, som blir det samme som adressen til registeret det skal leses fra.</LI>
+			</UL>
+		</TD>
+	</TR>
+	<TR>
+		<TH><MARQUEE behavior="alternate" direction="down">Superskalar CPU</MARQUEE></TH>
+		<TD>
+			En superskalar prosessor implementerer en form for parallellitet som kalles instruksjonsnivåparallellitet. Dette betyr at den kan utføre flere instruksjoner pr. klokkesyklus (dupliserer CPU-enheter).
+		</TD>
+	</TR>
+	<TR>
+		<TH><MARQUEE behavior="alternate" direction="down">Lokalitet</MARQUEE></TH>
+		<TD>
+			<UL>
+				<LI>Tid - om vi leste fra en minneadresse er det sannsynlig at vi snart vil lese fra den samme adressen igjen.</LI>
+				<LI>Rom - om vi leste fra en minneadresse er det sannsynlig at vi snart vil lese fra naboadressen.</LI>
+			</UL>
+		</TD>
+	</TR>
+	<TR>
+		<TH><MARQUEE behavior="alternate" direction="down">Dataavhengighet</MARQUEE></TH>
+		<TD>
+			<UL>
+				<LI>RAW - Read-After-Write (sanne dataavhengigheter) er når f.eks. instruksjon 1 skriver til et register og instruksjon 2 skal lese fra det samme registeret.</LI>
+				<LI>WAW - Write-After-Write (utavhengigheter) er når f.eks. instruksjon 3 skriver til register 1 og instruksjon 1 skriver til register 1.</LI>
+				<LI>WAR - Write-After-Read (antiavhengigheter) er når f.eks. instruksjon 3 skriver til register 1 og instruksjon 2 leser fra R1.</LI>
+			</UL>
+		</TD>
+	</TR>
+	<TR>
+		<TH><MARQUEE behavior="alternate" direction="down">RAM</MARQUEE></TH>
+		<TD>
+			<UL>
+				<LI>SRAM - Statisk RAM er raskt og trenger ikke oppdateres. Brukes ofte i hurtigbuffere.</LI>
+				<LI>DRAM - Dynamisk RAM må friskes opp jevnlig. Det tar mindre plass en SRAM (2 vs. 6 transistorer).</LI>
+				<LI>SDRAM - Synkront Dynamisk RAM betyr at data blir overført til/fra RAM synkront med klokka (og systembussen)</LI>
+			</UL>
+		</TD>
+	</TR>
+	<TR>
+		<TH><MARQUEE behavior="alternate" direction="down">CMP</MARQUEE></TH>
+		<TD>
+			Chip-level MultiProsessor er flere prosessorer på samme brikke. Bruker samme hurtigbuffer
+			<UL>
+				<LI>Homogene kjerner - alle kjernene er like</LI>
+				<LI>Heterogene kjerner - forskjellige kjerner til forskjellige oppgaver, dvs de har forskjellig instruksjonsett og/eller ytelse.</LI>
+			</UL>
+			Fordeler med CMP er lavere effekt/varmeutvikling, bedre utnyttelse av prosessorkraft, mulighet for "ut av rekkefølge" og lettere å utnytte instruksjonsnivåparallellitet.
+		</TD>
+	</TR>
+	<TR>
+		<TH><MARQUEE behavior="alternate" direction="down">Adressering</MARQUEE></TH>
+		<TD>
+			Måten instruksjonen angir hvor data skal hentes fra kalles en adresseringsmodus.
+			<UL>
+				<LI>Immidiate - Operanden er innbakt i instruksjonen. Dersom operanden er kjent (en konstant) når programmet lages, kan verdien av denne legges inn i selve instruksjonen.</LI>
+				<LI>Direkte - Instruksjonen angir adressen til operand i RAM.</LI>
+				<LI>Indirekte - Instruksjonen angir adresse til RAM-celle som igjen inneholder adressen til operand</LI>
+				<LI>Register - Instruksjon har nummer på register som inneholder operand. Populært å bruke siden</LI>
+				<LI>Indirekte register - Instruksjon har nummer på register som inneholder adresse til operand i RAM</LI>
+				<LI>Stakk - Adressen er implisitt gitt av stakkpeker.</LI>
+			</UL>
+		</TD>
+	</TR>
+	<TR>
+		<TH><MARQUEE behavior="alternate" direction="down">Branch Prediction</MARQUEE></TH>
+		<TD>
+			(NO: Forgreningspredikering)
+			<UL>
+				<LI>Statisk - forutsier hopp uavhengig av hvor hopp har forekommet før. Forutsier aldri/alltid hopp.</LI>
+				<LI>Dynamisk - forutsier hopp ut i fra hvor det har skjedd hopp før.</LI>
+			</UL>
+		</TD>
+	</TR>
+</TABLE>
+<H3><MARQUEE behavior="alternate" scrollamount="20">Antall forekomster av konsepter i de siste eksamenene</MARQUEE></H3>
+<TABLE border=0 cellpadding=0 cellspacing=0 id='tblMain'>
+    <TR><TD>IJVM<TD>24</TR><TR><TD>mikroinstruksjoner<TD>18</TR><TR><TD>adressering<TD>16</TR><TR><TD>RAM/ROM<TD>16</TR><TR><TD>ISA<TD>13</TR><TR><TD>ILP<TD>13</TR><TR><TD>pipeline/samlebånd<TD>10</TR><TR><TD>RISC<TD>10</TR><TR><TD>CMP<TD>10</TR><TR><TD>Chip select<TD>10</TR><TR><TD>mikroarkitektur<TD>9</TR><TR><TD>ALU<TD>9</TR><TR><TD>superskalar prosessor<TD>7</TR><TR><TD>assembly/DARK<TD>7</TR><TR><TD>Cache<TD>7</TR><TR><TD>Adresseområde<TD>7</TR><TR><TD>SP, LV, CPP, TOS, OPC, H...<TD>7</TR><TR><TD>buss<TD>6</TR><TR><TD>x-adresseinstruksjoner<TD>5</TR><TR><TD>CISC<TD>5</TR><TR><TD>Multiplekser (MUX)<TD>5</TR><TR><TD>avbrudd<TD>4</TR><TR><TD>load-store<TD>4</TR><TR><TD>mic-1<TD>4</TR><TR><TD>statisk ram<TD>4</TR><TR><TD>Von neumann<TD>4</TR><TR><TD>Adressedekoding<TD>4</TR><TR><TD>MPC<TD>4</TR><TR><TD>PIO<TD>4</TR><TR><TD>SIMD/MIMD<TD>4</TR><TR><TD>MIR<TD>4</TR><TR><TD>pentium 4<TD>3</TR><TR><TD>PCI (express)<TD>3</TR><TR><TD>flyttallsoperasjoner<TD>3</TR><TR><TD>i/o<TD>3</TR><TR><TD>dma<TD>3</TR><TR><TD>Throughput<TD>3</TR><TR><TD>Dynamisk Ram<TD>3</TR><TR><TD>Forgreningspredikering<TD>3</TR><TR><TD>Stack<TD>3</TR><TR><TD>Heterogene kjerner<TD>3</TR><TR><TD>Programflytinstruksjon<TD>3</TR><TR><TD>Scoreboard<TD>3</TR><TR><TD>ultraspark 3<TD>2</TR><TR><TD>&quot;8051&quot;<TD>2</TR><TR><TD>bitregning<TD>2</TR><TR><TD>moore¿s lov<TD>2</TR><TR><TD>BIG/little endian<TD>2</TR><TR><TD>Avbildning<TD>2</TR><TR><TD>Three-state buffer<TD>2</TR><TR><TD>Arbitrering<TD>2</TR><TR><TD>Mikroprogram<TD>2</TR><TR><TD>Brukerregister<TD>2</TR><TR><TD>Data path<TD>2</TR><TR><TD>Adder/halvadder<TD>2</TR><TR><TD>Flerkjerneprosessor<TD>2</TR><TR><TD>Styreord<TD>2</TR><TR><TD>Register renaming<TD>2</TR><TR><TD>instruksjonsformat<TD>2</TR><TR><TD>multiprosessoor<TD>1</TR><TR><TD>registeromdøping<TD>1</TR><TR><TD>prefetch<TD>1</TR><TR><TD>IA-64<TD>1</TR><TR><TD>hurtgibuffer<TD>1</TR><TR><TD>hovedlager<TD>1</TR><TR><TD>trefffrate<TD>1</TR><TR><TD>segmentregister<TD>1</TR><TR><TD>toerkomplement<TD>1</TR><TR><TD>prosessortype<TD>1</TR><TR><TD>instruksjonerregister<TD>1</TR><TR><TD>mips<TD>1</TR><TR><TD>harddisker<TD>1</TR><TR><TD>usb<TD>1</TR><TR><TD>seriell overføring<TD>1</TR><TR><TD>parallell overføring<TD>1</TR><TR><TD>dataavhengighet<TD>1</TR><TR><TD>RPN<TD>1</TR><TR><TD>D-flipflop<TD>1</TR><TR><TD>RAID<TD>1</TR><TR><TD>Interpreting/translation/compiling<TD>1</TR><TR><TD>Seriell bus<TD>1</TR><TR><TD>Polling<TD>1</TR><TR><TD>avhengighet<TD>1</TR><TR><TD>Array computer<TD>1</TR><TR><TD>Word length<TD>1</TR><TR><TD>Fetch-decode-execute<TD>1</TR><TR><TD>Multithreading<TD>1</TR><TR><TD>Set-assosiativt<TD>1</TR><TR><TD>Trap<TD>1</TR><TR><TD>Lokalitet<TD>1</TR><TR><TD>TLB<TD>1</TR><TR><TD>Flynns taksonomi<TD>1</TR><TR><TD>Sekvensielt konsistent<TD>1</TR><TR><TD>mic-3<TD>1</TR><TR><TD>Out of order execution<TD>1</TR><TR><TD>write-through/write-back<TD>1</TR><TR><TD>Offset<TD>1</TR><TR><TD>aksesstid<TD>1</TR>
+</TABLE>
+<DIV id="fb-root"></DIV>
+<SCRIPT>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=210184682430432";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</SCRIPT>
+<SCRIPT type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37019505-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</SCRIPT>
+</BODY>
+</HTML>
