@@ -49,11 +49,12 @@ a {
     }
 
     a.cv-link {
-        float: right;
         display: block;
         line-height: 60px;
         padding-right: 20px;
         font-size: 1.2em;
+        position: absolute;
+        right: 0;
     }
     h1 {
         font: 35px/60px "Arvo", serif normal;
@@ -83,6 +84,26 @@ h2.subtitle {
 
     @include media($desktop-up) {
         padding-top: 100px;
+    }
+
+    .category {
+        margin-top: 1em;
+        overflow: hidden;
+
+        @include media($tablet-up) {
+            text-align: center;
+        }
+
+        h2 {
+            @include media($mobile-only) {
+                margin-left: 25%;
+            }
+            @include media($tablet-up) {
+                font-size: 1.8em;
+                text-align: center;
+                margin: .5em 0;
+            }
+        }
     }
 
     .item {
@@ -142,7 +163,8 @@ h2.subtitle {
             }
         }
 
-        h2 {
+        h3 {
+            font-size: 1.5em;
             font-family: "Quicksand", sans-serif;
         }
         p {
