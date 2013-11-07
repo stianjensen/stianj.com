@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+        <meta name="description" content="When you find a golden pot at the end of the rainbow, everything seems perfect. But as you collect the gold, someone is creeping closer, going after the gold. You have to defend it, and yourself! Use the light of the rainbow channeled as a laser to take down the beasts.">
+        <meta name="keywords" content="bacon,game,jam,06,tower,defense,click,rainbows">
+        <meta name="author" content="Ninjadev">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="MobileOptimized" content="320">
+        <meta name="HandheldFriendly" content="true">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+        <title>Cute Animals Inc.</title>
+
+        <link rel=stylesheet href=res/style.css />
+
+        <!-- lib files -->
+        <script src=lib/jquery.min.js></script>
+        <script src=lib/StateManager.js></script>
+        <script src=lib/pointToLine.js></script>
+        <script src=lib/handlebars.js></script>
+        <script src=lib/soundjs-0.5.0.min.js></script>
+
+        <!-- src files -->
+        <script src=src/Enemy.js?v=2></script>
+        <script src=src/ParticleSystem.js?v=2></script>
+        <script src=src/bootstrap.js?v=2></script>
+        <script src=src/ExampleState.js?v=2></script>
+        <script src=src/GameState.js?v=2></script>
+        <script src=src/MenuState.js?v=2></script>
+        <script src=src/CreditsState.js?v=2></script>
+        <script src=src/AchievementState.js?v=2></script>
+        <script src=src/LaserController.js?v=2></script>
+        <script src=src/Laser.js?v=2></script>
+        <script src=src/Pot.js?v=2></script>
+        <script src=src/Rainbow.js?v=2></script>
+        <script src=src/AudioButton.js?v=2></script>
+        <script src=src/Toast.js?v=2></script>
+        <script src=src/Achievements.js?v=2></script>
+        <script src=src/UpgradeDebuffOnHit.js?v=2></script>
+        <script src=src/Cash.js?v=2></script>
+        <script src=src/Colors.js?v=2></script>
+        <script src=src/MoneyEffect.js?v=2></script>
+        <script src=src/Upgrades.js?v=2></script>
+        <script src=src/SpeedEffect.js?v=2></script>
+        <script src=src/UpgradeDamageMultiplier.js?v=2></script>
+        <script src=src/UpgradeAddBaseDamage.js?v=2></script>
+        <script src=src/DotEffect.js?v=2></script>
+        <script src=src/SpecialWeapon.js?v=2></script>
+        <script src=src/Stats.js?v=2></script>
+        <script src=src/EnemyController.js?v=2></script>
+        <script src=src/Waves.js?v=2></script>
+        <script src=src/EnemyTypes.js?v=2></script>
+        <script src=src/ProgressCircle.js?v=2></script>
+        <script src=src/SpecialWeaponController.js?v=2></script>
+
+    </head>
+    <body onload="bootstrap()">
+        <audio id="music" loop>
+            <source src="res/music/music.mp3" type="audio/mpeg">
+            <source src="res/music/music.ogg" type="audio/ogg">
+        </audio>
+
+    <div id=wrapper>
+    </div>
+
+    <div class="toast template">
+        <div class=message>
+        </div>
+    </div>
+
+    <div class="achievement template">
+        <img class=image />
+        <div>
+            <div class=name></div>
+            <div class=description></div>
+        </div>
+    </div>
+
+    <div class="cash template">
+        <div class="value"></div>
+    </div>
+
+    <div class="upgrades template">
+        <h2>Upgrades</h2>
+        <div class="img-upgrade-container"></div>
+        <div class="desc-upgrade-container"></div>
+    </div>
+
+    <div class="health template">
+        <span class=heart>&hearts;</span>
+        <span class=value></span>
+    </div>
+
+    <div class="weapons template"></div>
+
+    <div class="achievements template"></div>
+
+    <script id="upgrade-img-template" type="text/x-handlebars-template">
+        <div class="tooltip upgrade {{#if canPurchase}}can-purchase{{/if}}" data-id="{{ id }}">
+            <img class=upgrade-purchase src=res/achievements/{{ img }} />
+        </div>
+    </script>
+
+    <script id="upgrade-desc-template" type="text/x-handlebars-template">
+        <div class=description data-id="{{ id }}">
+                <strong>{{ name }}</strong>
+                <span style=float:right;color:yellow>$ {{ cost }}</span>
+                <p>{{ description }}</p>
+            </div>
+        </div>
+    </script>
+
+    <script id="weapons-list-template" type="text/x-handlebars-template">
+        <div class="weapons-list">
+            {{#each weapons}}
+                <div class="weapon" data-id="{{@index}}">
+                    <img class=weapon-image src=res/achievements/{{ image }} />
+                </div>
+            {{/each}}
+        </div>
+    </script>
+
+
+    <script id="achievements-list-template" type="text/x-handlebars-template">
+        <a href=javascript:; class=back-button>[Back]</a>
+        <h1>Achievements</h1>
+        <div class="achievement-list">
+            {{#each achievements}}
+                <div class="achievement-element">
+                    <img class=achievement-avatar src=res/achievements/{{ custom_image }}.png />
+                    <h2>{{ name }}:</h2>
+                    {{ description }}
+                </div>
+            {{/each}}
+        </div>
+    </script>
+
+    <div id=overlay class=template></div>
+    <div id=game-over class=template></div>
+
+    </body>
+</html>

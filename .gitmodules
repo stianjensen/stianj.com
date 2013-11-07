@@ -1,3 +1,6 @@
 [submodule "skog"]
 	path = skog
 	url = git@github.com:sigvef/skog.git
+[submodule "bgj-06"]
+	path = bgj-06
+	url = git@github.com:ninjadev/bgj-06.git
