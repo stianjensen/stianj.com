@@ -7,3 +7,7 @@ run:
 .PHONY: update
 update:
 	bundle install
+
+.PHONY: build
+build:
+	bundle exec jekyll build
