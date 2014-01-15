@@ -19,7 +19,7 @@
     - title: "KINK demo"
       image: "images/kink_preview@200px.png"
       description: "A WebGL demo made before going to BEKK Robocup 2013. Written in javascript using THREE.js."
-      link: "http://kinkdemo.com/"
+      link: "http://stianj.com/kink-demo/"
 
     - title: "Honeycomb"
       image: "images/honeycomb_preview@200px.png"
