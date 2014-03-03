@@ -1,43 +1,42 @@
 <?php
+$welcome_messages = array(
+    "Write what you want...",
+    "How are you?",
+    "The intertubes",
+    "Ahoy",
+    "Just add words",
+    "Knock knock\nWho's there?"
+);
+$colors = array(
+    "light",
+    "dark",
+    "orange",
+    "blue",
+    "purple",
+    "red",
+    "green",
+    "brown"
+);
+
 if (array_key_exists('text', $_GET)) {
     $text = strip_tags(rtrim($_GET['text']));
 } else {
-    $text = "Write what you want...";
+    $text = $welcome_messages[array_rand($welcome_messages)];
 }
 $text = str_replace("\n", "<br />", $text);
-if (array_key_exists('color', $_GET)) {
-    $color = rtrim($_GET['color'], "/");
-} else {
-    $color = "green";
+
+$color = (array_key_exists('color', $_GET)) ? rtrim($_GET['color'], "/") : "";
+if (!in_array($color, $colors)) {
+    $color = $colors[array_rand($colors)];
 }
-switch($color) {
-case "yellow":
-    $bg_color = "yellow-color";
-    break;
-case "orange":
-    $bg_color = "orange-color";
-    break;
-case "blue":
-    $bg_color = "blue-color";
-    break;
-case "purple":
-    $bg_color = "purple-color";
-    break;
-case "red":
-    $bg_color = "red-color";
-    break;
-case "pink":
-    $bg_color = "pink-color";
-    break;
-default:
-    $bg_color = "green-color";
-    break;
-}
+$bg_color = $color . "-color";
 ?>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
 <title>hip.</title>
 <link rel="stylesheet" type="text/css" href="/static/flexbox.css" />
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome.min.css" />
@@ -56,14 +55,18 @@ default:
     <a href=javascript:; id="share-link" class="icon-link"></a>
 </li>
 </ul>
-<ul class="color-tiles">
-<li><a href="javascript:;" class="red-color"></a></li>
-<li><a href="javascript:;" class="orange-color"></a></li>
-<li><a href="javascript:;" class="yellow-color"></a></li>
-<li><a href="javascript:;" class="green-color"></a></li>
-<li><a href="javascript:;" class="blue-color"></a></li>
-<li><a href="javascript:;" class="pink-color"></a></li>
-<li><a href="javascript:;" class="purple-color"></a></li>
+<ul class="color-tiles tile-selector">
+<?php foreach ($colors as $color): ?>
+    <li><a href="javascript:;" class="<?php echo $color; ?>-color"></a></li>
+<?php endforeach; ?>
+</ul>
+<ul class="background-tiles tile-selector">
+<li><a href="javascript:;" class="background-1"></a></li>
+<li><a href="javascript:;" class="background-2"></a></li>
+<li><a href="javascript:;" class="background-3"></a></li>
+<li><a href="javascript:;" class="background-4"></a></li>
+<li><a href="javascript:;" class="background-5"></a></li>
+<li><a href="javascript:;" class="background-6"></a></li>
 </ul>
 </div>
 <script src=//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js></script>
@@ -93,7 +96,7 @@ default:
             toolbox.classList.remove('active');
         }, 1500);
     });
-    document.querySelector('.color-tiles').addEventListener('click', function(e){
+    $('.tile-selector').on('click', function(e){
         if (e.target.tagName != "A") return;
         
         console.log("color: %s", e.target.className);
