@@ -55,19 +55,19 @@ $bg_color = $color . "-color";
     <a href=javascript:; id="share-link" class="icon-link"></a>
 </li>
 </ul>
+
 <ul class="color-tiles tile-selector">
 <?php foreach ($colors as $color): ?>
     <li><a href="javascript:;" class="<?php echo $color; ?>-color"></a></li>
 <?php endforeach; ?>
 </ul>
+
 <ul class="background-tiles tile-selector">
-<li><a href="javascript:;" class="background-1"></a></li>
-<li><a href="javascript:;" class="background-2"></a></li>
-<li><a href="javascript:;" class="background-3"></a></li>
-<li><a href="javascript:;" class="background-4"></a></li>
-<li><a href="javascript:;" class="background-5"></a></li>
-<li><a href="javascript:;" class="background-6"></a></li>
+<?php for ($i=1; $i<=9; $i++): ?>
+<li><a href="javascript:;" class="background-<?php echo $i; ?>"></a></li>
+<?php endfor; ?>
 </ul>
+
 </div>
 <script src=//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js></script>
 <script src=//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js></script>

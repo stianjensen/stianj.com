@@ -4,20 +4,32 @@
 }
 html, body {
     height: 100%;
+    color: white;
+}
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-y: hidden;
+}
+.tile-selector [class^="background"] {
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 #centered {
-    width: 100%;
-    height: 100%;
+    width: 98%;
+    height: 98%;
+    margin: 1%;
+    overflow: hidden;
 }
-#bigtext {
+.bigtext {
     font-family: 'Helvetica Neue', arial, sans-serif;
     width: 100%;
     background: transparent;
     border: none;
     outline: none !important;
     text-align: center;
-    color: white;
     font-weight: bold;
+    white-space: nowrap;
 }
 #toolbox {
     position: fixed;
@@ -40,7 +52,7 @@ html, body {
 }
 #toolbox ul li {
     display: inline-block;
-    height: 25px;
+    height: 32px;
     background: white;
     border: 1px solid #666;
     -webkit-border-radius: 3px;
@@ -48,35 +60,135 @@ html, body {
     border-radius: 3px;
     position: relative;
     vertical-align: top;
+    margin-left: 2px;
 }
 #toolbox li a {
     display: inline-block;
-    width: 25px;
+    width: 32px;
     height: 100%;
     font-size: 21px;
-    line-height: 25px;
+    line-height: 32px;
     color: #333;
+}
+#toolbox .background-tiles li {
+    height: 50px;
+}
+#toolbox .background-tiles li a {
+    width: 50px;
+    line-height: 50px;
 }
 .blue-color {
     background-color: #21445B;
 }
 .green-color {
-    background-color: #5D8A66;
+    color: #5B6350;
+    background-color: #aee1a4;
+    background: -webkit-repeating-linear-gradient(-45deg, #aee1a4, #aee1a4 20px, #D8FAD2 20px, #D8FAD2 40px);
+    background: -moz-repeating-linear-gradient(-45deg, #aee1a4, #aee1a4 20px, #D8FAD2 20px, #D8FAD2 40px);
+    background: repeating-linear-gradient(-45deg, #aee1a4, #aee1a4 20px, #D8FAD2 20px, #D8FAD2 40px);
 }
-.yellow-color {
-    background-color: #D1B882;
+.light-color {
+    color: #445353;
+    background-color: #cbeee9;
+    background:
+        -moz-radial-gradient(#afcfcf 15%, transparent 16%),
+        -moz-radial-gradient(#afcfcf 15%, transparent 16%),
+        #cbeee9;
+    background:
+        -webkit-radial-gradient(#afcfcf 15%, transparent 16%),
+        -webkit-radial-gradient(#afcfcf 15%, transparent 16%),
+        #cbeee9;
+    background:
+        radial-gradient(#afcfcf 15%, transparent 16%),
+        radial-gradient(#afcfcf 15%, transparent 16%),
+        #cbeee9;
+    background-position: 0 0, 80px 80px;
+    
+    -webkit-background-size:160px 160px;
+    -moz-background-size:160px 160px;
+    background-size:160px 160px;
 }
 .red-color {
     background-color: #b74f37;
-}
-.pink-color {
-    background-color: #ff00fc;
+    background: repeating-radial-gradient(circle, #b74f37, #b74f37 40px, #dd5c44 40px, #dd5c44 80px);
 }
 .purple-color {
     background-color: #9b59b6;
+    color: #E7C4E6;
 }
 .orange-color {
     background-color: #cc7d38;
+}
+.dark-color {
+    background-color: #0f0510;
+    color: #ead8e7;
+}
+.brown-color {
+    background-color: #6d695c;
+    background-image:
+    repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+    linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+    background-size: 70px 120px;
+    color: white;
+    background-repeat: repeat;
+}
+
+.background-1 {
+    background-image: url("hip-1.jpg");
+    color: #111313;
+    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+.background-2 {
+    background-image: url("hip-2.jpg");
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+.background-3 {
+    background-image: url("hip-3.jpg");
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+.background-4 {
+    background-image: url("hip-4.jpg");
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+.background-5 {
+    background-image: url("hip-5.jpg");
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+.background-6 {
+    background-image: url("hip-6.jpg");
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+.background-7 {
+    background-image: url("hip-7.jpg");
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+.background-8 {
+    background-image: url("hip-8.jpg");
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+.background-9 {
+    background-image: url("hip-9.jpg");
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 .link-container {
     display: none;
