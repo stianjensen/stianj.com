@@ -25,6 +25,12 @@ education: [
 
 work: [
 {
+    "title": "[Nordic Semiconductor (summer internship)](http://nordicsemiconductor.github.io/puck/)",
+    "subtitle": "Open source Bluetooth LE platform for mbed",
+    "startDate": "06. 2014",
+    "endDate": "08. 2014"
+},
+{
     "title": "The Music Garden at Ringve Museum",
     "subtitle": "iPad app for showcasing Ringve Museums music catalog and instruments",
     "startDate": "05. 2012",
@@ -52,9 +58,9 @@ work: [
 
 projects: [
 {
-    "title": "BLAST",
-    "subtitle": "Anonymous location-based image sharing service for mobile devices.",
-    "startDate": "Under development"
+    "title": "[Inakuwa Oasis](http://arkt.is/inakuwa-oasis/)",
+    "subtitle": "WebGL and THREE.js demo for Solskogen demo party 2014. Won first place in the combined compo.",
+    "startDate": 2014
 },
 {
     "title": "[Composite](http://www.getcomposite.com/)",
@@ -105,20 +111,6 @@ projects: [
     </div>
 
     <div class=left>
-    <h2>Education</h2>
-    <dl>
-    {% for item in page.education %}
-        <dt>
-        {{ item.startDate }}
-        {% if item.endDate %}
-            – {{ item.endDate }}
-        {% endif %}
-        </dt>
-        <dd>
-            <strong>{{ item.title }}</strong>
-            <p>{{ item.subtitle | markdownify }}</p>
-        </dd>{% endfor %}
-    </dl>
     <h2>Experience</h2>
     <dl>
     {% for item in page.work %}
@@ -148,12 +140,27 @@ projects: [
         </dd>{% endfor %}
     </dl>
     <p><em>Full list of projects on <a href="http://stianj.com/">Stianj.com</a></em></p>
+    <h2>Education</h2>
+    <dl>
+    {% for item in page.education %}
+        <dt>
+        {{ item.startDate }}
+        {% if item.endDate %}
+            – {{ item.endDate }}
+        {% endif %}
+        </dt>
+        <dd>
+            <strong>{{ item.title }}</strong>
+            <p>{{ item.subtitle | markdownify }}</p>
+        </dd>{% endfor %}
+    </dl>
 </div>
 <div class=right>
     <div class=box>
         <h3>Skills</h3>
         <ul>
             <li>Javascript</li>
+            <li>Node.js</li>
             <li>Python – Django</li>
             <li>PHP</li>
             <li>HTML</li>
@@ -162,6 +169,8 @@ projects: [
             <li>Git</li>
             <li>Vim</li>
             <li>Photoshop</li>
+            <li>Bluetooth LE</li>
+            <li>WebGL</li>
         </ul>
     </div>
     <div class=box>
