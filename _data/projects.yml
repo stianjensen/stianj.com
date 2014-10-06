@@ -11,6 +11,11 @@
 
 - type: "Demos"
   items:
+    - title: "Inakuwa Oasis"
+      image: "images/inakuwa_oasis@200px.png"
+      description: "WebGL demo created with THREE.js and [nin](https://github.com/ninjadev/nin/. First place in combined compo at solskogen 2014"
+      link: "http://arkt.is/inakuwa-oasis/"
+
     - title: "TUNL-MNTN-WTER"
       image: "images/tunlmntnwter_preview@200px.png"
       description: "WebGL demo made for Solskogen 2013. 5th place in newschool compo."
@@ -20,12 +25,6 @@
       image: "images/kink_preview@200px.png"
       description: "A WebGL demo made before going to BEKK Robocup 2013. Written in javascript using THREE.js."
       link: "http://stianj.com/kink-demo/"
-
-    - title: "Honeycomb"
-      image: "images/honeycomb_preview@200px.png"
-      description: "WebGL demo that won first place at Solskogen 2012."
-      link: "http://arkt.is/honeycomb/"
-
 
 - type: "Games"
   items:
