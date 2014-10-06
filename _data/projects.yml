@@ -13,7 +13,7 @@
   items:
     - title: "Inakuwa Oasis"
       image: "images/inakuwa_oasis@200px.png"
-      description: "WebGL demo created with THREE.js and [nin](https://github.com/ninjadev/nin/. First place in combined compo at solskogen 2014"
+      description: "WebGL demo created with THREE.js and [nin](https://github.com/ninjadev/nin/). First place in combined compo at solskogen 2014"
       link: "http://arkt.is/inakuwa-oasis/"
 
     - title: "TUNL-MNTN-WTER"
