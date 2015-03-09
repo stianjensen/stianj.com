@@ -1,3 +1,7 @@
 name: Stianj.com
-pygments: true
-exclude: [Gemfile, Gemfile.lock, Makefile, README.md]
+highlighter: pygments
+exclude: ["Gemfile", "Gemfile.lock", "Makefile", "README.md"]
+
+sass:
+    style: :compressed
+    compile_in_place: false
