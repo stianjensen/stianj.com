@@ -11,6 +11,11 @@
 
 - type: "Demos"
   items:
+    - title: "Everything is Fashion"
+      image: "images/everything_is_fashion@200px.png"
+      description: "Ninjadev's submission for solskogen 2015. Came in at 2nd place."
+      link: "http://stianj.com/fashion/"
+
     - title: "Inakuwa Oasis"
       image: "images/inakuwa_oasis@200px.png"
       description: "WebGL demo created with THREE.js and [nin](https://github.com/ninjadev/nin/). First place in combined compo at solskogen 2014"
