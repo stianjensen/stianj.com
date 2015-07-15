@@ -12,7 +12,7 @@
 - type: "Demos"
   items:
     - title: "Everything is Fashion"
-      image: "images/everything_is_fashion@200px.png"
+      image: "images/fashion@250px.png"
       description: "Ninjadev's submission for solskogen 2015. Came in at 2nd place."
       link: "http://stianj.com/fashion/"
 
