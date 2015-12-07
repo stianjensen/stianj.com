@@ -4,10 +4,15 @@
       description: "Interactive prototypes straight from Photoshop to your iPhone"
       link: "http://www.getcomposite.com/"
 
+    - title: "nin"
+      image: "images/nin_preview@200px.jpg"
+      description: "Ninjadev's internal demotool. Used to create WebGL demos like Everything is Fashion and Inakuwa Oasis. And nin itself runs directly in the browser!"
+      link: "https://www.github.com/ninjadev/nin/"
+
     - title: "Wikipendium"
       image: "images/wikipendium_preview@200px.png"
       description: "Compendiums edited as a wiki."
-      link: "http://www.wikipendium.no"
+      link: "https://www.wikipendium.no"
 
 - type: "Demos"
   items:
