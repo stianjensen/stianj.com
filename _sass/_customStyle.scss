@@ -115,7 +115,7 @@ h2.subtitle {
             border-bottom: 1px dashed #555;
 
             &:last-child {
-                border-bottom: none;    
+                border-bottom: none;
             }
         }
         @include media($tablet-up) {
@@ -124,10 +124,11 @@ h2.subtitle {
             vertical-align: top;
         }
         @include media($small-tablet-only) {
-            width: 48%;    
+            width: 48%;
             margin-right: 4%;
 
-            &:nth-child(2n) {
+            &:nth-of-type(2n),
+            &:last-child {
                 margin-right: 0;
             }
         }
@@ -135,7 +136,8 @@ h2.subtitle {
             width: 30%;
             margin-right: 5%;
 
-            &:nth-child(3n) {
+            &:nth-of-type(3n),
+            &:last-child {
                 margin-right: 0;
             }
         }
