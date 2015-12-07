@@ -1,17 +1,17 @@
 - items:
     - title: "Composite"
       image: "images/composite_preview@200px.jpg"
-      description: "Interactive prototypes straight from Photoshop to your iPhone"
+      description: "Interactive prototypes straight from Photoshop to your iPhone."
       link: "http://www.getcomposite.com/"
 
     - title: "nin"
-      image: "images/nin_preview@200px.jpg"
+      image: "images/nin_preview@200px.png"
       description: "Ninjadev's internal demotool. Used to create WebGL demos like Everything is Fashion and Inakuwa Oasis. And nin itself runs directly in the browser!"
       link: "https://www.github.com/ninjadev/nin/"
 
     - title: "Wikipendium"
       image: "images/wikipendium_preview@200px.png"
-      description: "Compendiums edited as a wiki."
+      description: "Compendiums edited as a wiki. Available for free and used by lots of NTNU students."
       link: "https://www.wikipendium.no"
 
 - type: "Demos"
@@ -54,6 +54,11 @@
       image: "images/hip_preview@200px.png"
       description: "For displaying large type in the browser."
       link: "http://hip.stianj.com/"
+
+    - title: "Change Places"
+      image: "images/changeplaces_preview@200px.png"
+      description: "A simple web-app with a repeating timer. Made for extreme programming where people get 5 minutes each to work on the computer."
+      link: "http://changeplac.es"
 
     - title: "Guide to DataGK [no]"
       image: "images/datagk_preview@200px.png"
