@@ -110,7 +110,7 @@ h2.subtitle {
         padding-bottom: .7em;
 
         @include media($mobile-only) {
-            @include span-columns(4);
+            overflow: hidden;
             margin: .7em 0;
             border-bottom: 1px dashed #555;
 
