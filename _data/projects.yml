@@ -19,7 +19,7 @@
     - title: "Everything is Fashion"
       image: "images/fashion_preview@250px.png"
       description: "Ninjadev's submission for solskogen 2015. Came in at 2nd place."
-      link: "http://stianj.com/fashion/"
+      link: "https://stianj.com/fashion/"
 
     - title: "Inakuwa Oasis"
       image: "images/inakuwa_oasis@200px.png"
@@ -29,19 +29,19 @@
     - title: "TUNL-MNTN-WTER"
       image: "images/tunlmntnwter_preview@200px.png"
       description: "WebGL demo made for Solskogen 2013. 5th place in newschool compo."
-      link: "http://stianj.com/skog/"
+      link: "https://stianj.com/skog/"
 
     - title: "KINK demo"
       image: "images/kink_preview@200px.png"
       description: "A WebGL demo made before going to BEKK Robocup 2013. Written in javascript using THREE.js."
-      link: "http://stianj.com/kink-demo/"
+      link: "https://stianj.com/kink-demo/"
 
 - type: "Games"
   items:
     - title: Cute Animals Inc.
       image: "images/cute-animals-inc_preview@200px.png"
       description: "My second Bacon Game Jam entry with Ninjadev. October 2013."
-      link: "http://stianj.com/bgj-06"
+      link: "https://stianj.com/bgj-06/"
 
     - title: "Windwill"
       image: "images/windwill_preview@200px.png"
@@ -53,7 +53,7 @@
     - title: "hip."
       image: "images/hip_preview@200px.png"
       description: "For displaying large type in the browser."
-      link: "http://hip.stianj.com/"
+      link: "https://hip.stianj.com/"
 
     - title: "Change Places"
       image: "images/changeplaces_preview@200px.png"
