@@ -20,7 +20,7 @@ body, .header {
 a {
     color: #006977;
     text-decoration: none;
-    
+
     &:hover {
         text-decoration: underline;
     }
@@ -41,7 +41,7 @@ a {
         left: 0;
         right: 0;
     }
-    
+
     .inner-header {
         max-width: 980px;
         position: relative;
@@ -292,8 +292,7 @@ h2.subtitle {
     }
 }
 
-
-html.flexbox .social-icons {
+.social-icons {
     display: -webkit-flex;
     display: -moz-flex;
     display: flex;
