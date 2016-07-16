@@ -16,6 +16,11 @@
 
 - type: "Demos"
   items:
+    - title: "Crankwork Steamfist"
+      image: "images/crankworksteamfist_preview@250px.png"
+      description: "Ninjadev's submission for solskogen 2016."
+      link: "https://stianj.com/crankwork-steamfist/"
+
     - title: "Everything is Fashion"
       image: "images/fashion_preview@250px.png"
       description: "Ninjadev's submission for solskogen 2015. Came in at 2nd place."
