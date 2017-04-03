@@ -1,4 +1,4 @@
-name: Stianj.com
+name: Stian Jensen
 exclude: ["Gemfile", "Gemfile.lock", "Makefile", "README.md"]
 
 sass:
