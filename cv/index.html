@@ -114,90 +114,91 @@ projects: [
 
 
 <div id="home" class=cv>
-    <img src=/images/me.jpg class=me>
+  <img src=/images/me.jpg class=me>
 
-    <div class=contact>
-        <dl>
-            <dt>Born:</dt>
-            <dd>16.07.1991</dd>
-            <dt>Address:</dt>
-            <dd>Oscars Gate 70, 0256 Oslo</dd>
-            <dt>Email:</dt>
-            <dd><a href="mailto:me@stianj.com">me@stianj.com</a></dd>
-            <dt>Phone:</dt>
-            <dd>+47 482 72 582</dd>
-            <dt>Github:</dt>
-            <dd><a href="http://github.com/stianjensen/">@stianjensen</a></dd>
-        </dl>
-    </div>
+  <div class=contact>
+    <dl>
+      <dt>Born:</dt>
+      <dd>16.07.1991</dd>
+      <dt>Address:</dt>
+      <dd>Oscars Gate 70, 0256 Oslo</dd>
+      <dt>Email:</dt>
+      <dd><a href="mailto:me@stianj.com">me@stianj.com</a></dd>
+      <dt>Phone:</dt>
+      <dd>+47 482 72 582</dd>
+      <dt>Github:</dt>
+      <dd><a href="http://github.com/stianjensen/">@stianjensen</a></dd>
+    </dl>
+  </div>
 
-    <div class=left>
+  <div class=left>
     <h2>Experience</h2>
     <dl>
-    {% for item in page.work %}
-        <dt>
-        {{ item.startDate }}
-        {% if item.endDate %}
-            – {{ item.endDate }}
-        {% endif %}
-        </dt>
-        <dd>
-            <strong>{{ item.title | markdownify }}</strong>
-            <p>{{ item.subtitle | markdownify }}</p>
-        </dd>{% endfor %}
+      {% for item in page.work %}
+      <dt>
+      {{ item.startDate }}
+      {% if item.endDate %}
+      – {{ item.endDate }}
+      {% endif %}
+      </dt>
+      <dd>
+      <strong>{{ item.title | markdownify }}</strong>
+      <p>{{ item.subtitle | markdownify }}</p>
+      </dd>{% endfor %}
     </dl>
     <h2>Projects</h2>
     <dl>
-    {% for item in page.projects %}
-        <dt>
-        {{ item.startDate }}
-        {% if item.endDate %}
-            – {{ item.endDate }}
-        {% endif %}
-        </dt>
-        <dd>
-            <strong>{{ item.title | markdownify }}</strong>
-            <p>{{ item.subtitle | markdownify }}</p>
-        </dd>{% endfor %}
+      {% for item in page.projects %}
+      <dt>
+      {{ item.startDate }}
+      {% if item.endDate %}
+      – {{ item.endDate }}
+      {% endif %}
+      </dt>
+      <dd>
+      <strong>{{ item.title | markdownify }}</strong>
+      <p>{{ item.subtitle | markdownify }}</p>
+      </dd>{% endfor %}
     </dl>
     <p><em>Full list of projects on <a href="http://stianj.com/">Stianj.com</a></em></p>
     <h2>Education</h2>
     <dl>
-    {% for item in page.education %}
-        <dt>
-        {{ item.startDate }}
-        {% if item.endDate %}
-            – {{ item.endDate }}
-        {% endif %}
-        </dt>
-        <dd>
-            <strong>{{ item.title }}</strong>
-            <p>{{ item.subtitle | markdownify }}</p>
-        </dd>{% endfor %}
+      {% for item in page.education %}
+      <dt>
+      {{ item.startDate }}
+      {% if item.endDate %}
+      – {{ item.endDate }}
+      {% endif %}
+      </dt>
+      <dd>
+      <strong>{{ item.title }}</strong>
+      <p>{{ item.subtitle | markdownify }}</p>
+      </dd>{% endfor %}
     </dl>
-</div>
-<div class=right>
+  </div>
+  <div class=right>
     <div class=box>
-        <h3>Skills</h3>
-        <ul>
-            <li>Javascript (React, Angular.js 1.x, Webpack...)</li>
-            <li>Node.js (Express.js, Mongoose...)</li>
-            <li>Python (Django, Flask, Tornado)</li>
-            <li>HTML</li>
-            <li>CSS/SASS/LESS</li>
-            <li>PHP</li>
-            <li>iOS (Swift and Objective C)</li>
-            <li>Rust</li>
-            <li>Git</li>
-            <li>Vim</li>
-            <li>Photoshop</li>
-            <li>Bluetooth LE</li>
-            <li>WebGL / Web Audio API / WebRTC</li>
-        </ul>
+      <h3>Skills</h3>
+      <ul>
+        <li>Javascript (React, Angular.js 1.x, Webpack...)</li>
+        <li>Node.js (Express.js, Mongoose...)</li>
+        <li>Python (Django, Flask, Tornado)</li>
+        <li>HTML</li>
+        <li>CSS/SASS/LESS</li>
+        <li>PHP</li>
+        <li>iOS (Swift and Objective C)</li>
+        <li>Rust</li>
+        <li>Git</li>
+        <li>Vim</li>
+        <li>Photoshop</li>
+        <li>Bluetooth LE</li>
+        <li>WebGL / Web Audio API / WebRTC</li>
+      </ul>
     </div>
     <div class=box>
-        <h3>References</h3>
-        <p>Upon request</p>
+      <h3>References</h3>
+      <p>Upon request</p>
 
-</div>
+    </div>
+  </div>
 </div>
