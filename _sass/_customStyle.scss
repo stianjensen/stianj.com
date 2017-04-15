@@ -285,7 +285,6 @@ h2.subtitle {
     }
     .social-icons a {
         display: inline-block;
-        margin-right: 1em;
         margin-bottom: 1em;
         color: #668999;
         text-align: center;
@@ -293,9 +292,7 @@ h2.subtitle {
 }
 
 .social-icons {
-    display: -webkit-flex;
-    display: -moz-flex;
     display: flex;
-    -webkit-justify-content: space-between;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
