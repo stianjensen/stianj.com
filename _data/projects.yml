@@ -60,6 +60,11 @@
 
 - type: "Other projects"
   items:
+    - title: "Shortsdag"
+      image: "images/shortsdag_preview@250px.png"
+      description: "Check if the weather is good enough to wear shorts today."
+      link: "https://shortsdag.no/"
+
     - title: "hip."
       image: "images/hip_preview@200px.png"
       description: "For displaying large type in the browser."
