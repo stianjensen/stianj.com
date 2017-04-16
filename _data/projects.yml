@@ -16,6 +16,11 @@
 
 - type: "Demos"
   items:
+    - title: "What Are You Syncing About?"
+      image: "images/whatareyousyncingabout_preview@250px.png"
+      description: "A demo made with Ninjadev for Revision 2017."
+      link: "https://stianj.com/what-are-you-syncing-about/"
+
     - title: "Crankwork Steamfist"
       image: "images/crankworksteamfist_preview@250px.png"
       description: "Ninjadev's submission for solskogen 2016."
