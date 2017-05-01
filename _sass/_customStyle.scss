@@ -188,7 +188,8 @@ h2.subtitle {
         width: 70%;
 
         dd {
-            font-family: verdana, sans-serif;
+            font-family: $sans-serif;
+            font-size: .9em;
         }
     }
     .me {
@@ -206,7 +207,7 @@ h2.subtitle {
         }
 
         h2 {
-            margin: 1.5em 0 1em 30%;
+            margin: 1.5em 0 1em 25%;
 
             @include media($mobile-only) {
                 margin-left: 0;
@@ -225,29 +226,29 @@ h2.subtitle {
                 float: left;
                 width: 20%;
                 clear: left;
+                text-align: right;
             }
         }
         dd {
-            font-size: .9em;
             margin-bottom: 15px;
 
             @include media($tablet-up) {
                 float: left;
                 max-width: 70%;
-                margin-left: 10%;
+                margin-left: 5%;
             }
             @include media($mobile-only) {
                 padding-bottom: 5px;
                 border-bottom: 1px solid #555;
             }
 
-            p {
-                font-family: verdana, sans-serif;
+            :not(strong) p {
+              font-family: $sans-serif;
+              font-size: .9em;
             }
         }
         strong {
             font-weight: normal;
-            font-size: 1.25em;
         }
     }
     .right {
@@ -269,7 +270,15 @@ h2.subtitle {
         }
 
         ul {
-            list-style-type: none;
+          list-style-type: none;
+
+          li {
+            line-height: 1.4;
+          }
+        }
+        ul, p {
+          font-size: .9em;
+          font-family: $sans-serif;
         }
     }
 }

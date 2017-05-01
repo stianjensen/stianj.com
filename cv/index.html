@@ -148,7 +148,7 @@ projects: [
       </dt>
       <dd>
       <strong>{{ item.title | markdownify }}</strong>
-      <p>{{ item.subtitle | markdownify }}</p>
+      <div>{{ item.subtitle | markdownify }}</div>
       </dd>{% endfor %}
     </dl>
     <h2>Projects</h2>
@@ -162,7 +162,7 @@ projects: [
       </dt>
       <dd>
       <strong>{{ item.title | markdownify }}</strong>
-      <p>{{ item.subtitle | markdownify }}</p>
+      <div>{{ item.subtitle | markdownify }}</div>
       </dd>{% endfor %}
     </dl>
     <p><em>Full list of projects on <a href="http://stianj.com/">Stianj.com</a></em></p>
@@ -176,8 +176,8 @@ projects: [
       {% endif %}
       </dt>
       <dd>
-      <strong>{{ item.title }}</strong>
-      <p>{{ item.subtitle | markdownify }}</p>
+      <strong>{{ item.title | markdownify }}</strong>
+      <div>{{ item.subtitle | markdownify }}</div>
       </dd>{% endfor %}
     </dl>
   </div>
