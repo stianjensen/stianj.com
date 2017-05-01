@@ -184,8 +184,10 @@ h2.subtitle {
         clear: left;
     }
     .contact {
-        float: left;
-        width: 70%;
+        @include media(min-width 480px) {
+          float: left;
+          width: 70%;
+        }
 
         dd {
             font-family: $sans-serif;
@@ -193,9 +195,16 @@ h2.subtitle {
         }
     }
     .me {
-        float: right;
-        width: 20%;
         border-radius: 50%;
+
+        @include media(max-width 479px) {
+          margin: 0 25%;
+          width: 50%;
+        }
+        @include media(min-width 480px) {
+          float: right;
+          width: 20%;
+        }
         @include media($tablet-up) {
             margin-right: 5%;
         }
