@@ -16,6 +16,11 @@
 
 - type: "Demos"
   items:
+    - title: "Zeven"
+      image: "images/zeven_preview@250px.png"
+      description: "A demo made with Ninjadev for Solskogen 2017."
+      link: "https://stianj.com/zeven/"
+
     - title: "What Are You Syncing About?"
       image: "images/whatareyousyncingabout_preview@250px.png"
       description: "A demo made with Ninjadev for Revision 2017."
