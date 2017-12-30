@@ -16,6 +16,11 @@
 
 - type: "Demos"
   items:
+    - title: "No Invitation"
+      image: "images/no_invitation_preview@250px.png"
+      description: "A demo made with Ninjadev as an invite for Revision 2018."
+      link: "https://stianj.com/no-invitation/"
+
     - title: "Zeven"
       image: "images/zeven_preview@250px.png"
       description: "A demo made with Ninjadev for Solskogen 2017."
