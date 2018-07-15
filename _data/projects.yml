@@ -16,6 +16,11 @@
 
 - type: "Demos"
   items:
+    - title: "Pinky Frinky"
+      image: "images/pinky_frinky_preview@250px.png"
+      description: "Traditional summer demo from Ninjadev for Solskogen 2018."
+      link: "https://stianj.com/pinky-frinky.png.html"
+
     - title: "No Invitation"
       image: "images/no_invitation_preview@250px.png"
       description: "A demo made with Ninjadev as an invite for Revision 2018."
