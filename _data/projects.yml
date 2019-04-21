@@ -17,6 +17,16 @@
 - type: "Demos"
   items:
     - title: "Pinky Frinky"
+      image: "images/flatshadesociety@250px.png"
+      description: "Invite to Solskogen 2019 made with Ninjadev. Released at Revision 2019."
+      link: "https://stianj.com/flat-shade-society/"
+
+    - title: "Look Closer"
+      image: "images/look_closer@250px.png"
+      description: "First time visiting TRSAC 2018, infinite zoomer demo."
+      link: "https://stianj.com/look-closer/"
+
+    - title: "Pinky Frinky"
       image: "images/pinky_frinky_preview@250px.png"
       description: "Traditional summer demo from Ninjadev for Solskogen 2018."
       link: "https://stianj.com/pinky-frinky.png.html"
