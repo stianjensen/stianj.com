@@ -1,4 +1,9 @@
 - items:
+    - title: "Hyre"
+      image: "images/hyre_preview@200px.png"
+      description: "Download the app to book and unlock cars in Norway."
+      link: "https://www.hyre.no/"
+
     - title: "Composite"
       image: "images/composite_preview@200px.jpg"
       description: "Interactive prototypes straight from Photoshop to your iPhone."
