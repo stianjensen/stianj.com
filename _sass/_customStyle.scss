@@ -90,6 +90,11 @@ h2.subtitle {
         margin-top: 1em;
         overflow: hidden;
 
+        .description {
+            max-width: 550px;
+            margin: 0 auto 1em;
+        }
+
         @include media($tablet-up) {
             text-align: center;
         }

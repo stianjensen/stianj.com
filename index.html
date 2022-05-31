@@ -4,19 +4,21 @@ title: Stian Jensen
 ---
 
 <div id="home">
-    {% for category in site.data.projects %}
+  {% for category in site.data.projects %}
     <div class=category>
-        {% if category.type %}
-            <h2>{{ category.type }}</h2>
-        {% endif %}
-        {% for item in category.items %}<div class=item>
-                <a href="{{ item.link }}">
-                    <div class=image style="background-image:url('{{ item.image }}')">
-                    </div>
-                    <h3>{{ item.title }}</h3>
-                </a>
-                <p>{{ item.description|markdownify }}</p>
-            </div>{% endfor %}
-        </div>
-    {% endfor %}
+      {% if category.type %}
+        <h2>{{ category.type }}</h2>
+      {% endif %}
+      {% if category.description %}
+        <div class=description>{{ category.description | markdownify }}</div>
+      {% endif %}
+      {% for item in category.items %}<div class=item>
+        <a href="{{ item.link }}">
+          <div class=image style="background-image:url('{{ item.image }}')"></div>
+          <h3>{{ item.title }}</h3>
+        </a>
+        <p>{{ item.description|markdownify }}</p>
+      </div>{% endfor %}
+    </div>
+  {% endfor %}
 </div>
