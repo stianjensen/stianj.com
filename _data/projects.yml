@@ -17,10 +17,20 @@
 - type: "Demos"
   description: I'm part of the [Demo scene](https://en.wikipedia.org/wiki/Demoscene) group [Ninjadev](https://www.ninjadev.org/). Here are some of the productions we've made, for different demo scene parties.
   items:
+    - title: "renin"
+      image: "images/renin_preview@256px.png"
+      description: "Ninjadev's internal demotool. Used to create WebGL demos like The Tale of the Bluebird and the Dragon. Renin itself is based on Vite.js and runs directly in the browser!"
+      link: "https://www.github.com/ninjadev/renin/"
+
     - title: "nin"
       image: "images/nin_preview@200px.png"
-      description: "Ninjadev's internal demotool. Used to create WebGL demos like Everything is Fashion and Inakuwa Oasis. And nin itself runs directly in the browser!"
+      description: "Ninjadev's old demotool. Used to create WebGL demos like Everything is Fashion and Inakuwa Oasis. And nin itself runs directly in the browser!"
       link: "https://www.github.com/ninjadev/nin/"
+
+    - title: "The Tale of the Bluebird and the Dragon"
+      image: "images/thet_tale_of_the_bluebird_and_the_dragon@250px.png"
+      description: "First production with Ninjadev's new tool, Renin. Released at Revision 2023."
+      link: "https://stianj.com/the-tale-of-the-bluebird-and-the-dragon/"
 
     - title: "Flat Shade Society"
       image: "images/flatshadesociety@250px.png"
