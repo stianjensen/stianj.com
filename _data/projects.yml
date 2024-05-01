@@ -1,8 +1,13 @@
 - items:
     - title: "Hyre"
       image: "images/hyre_preview@200px.png"
-      description: "Download the app to book and unlock cars in [Norway](https://www.hyre.no/) & [Sweden](https://www.hyre.se/)."
+      description: "Download the app to book and unlock cars in [Norway](https://www.hyre.no/), [Sweden](https://www.hyre.se/) and [Denmark](https://www.hyre.dk/)."
       link: "https://www.hyre.no/"
+
+    - title: "Her Dream Team"
+      image: "images/herdreamteam_preview.png"
+      description: "A fantasy football game created for Women's Super League."
+      link: "https://www.herdreamteam.com"
 
     - title: "Wikipendium"
       image: "images/wikipendium_preview@200px.png"
@@ -12,7 +17,7 @@
     - title: "Composite"
       image: "images/composite_preview@200px.jpg"
       description: "Interactive prototypes straight from Photoshop to your iPhone."
-      link: "http://www.getcomposite.com/"
+      link: "http://www.panes.no/"
 
 - type: "Demos"
   description: I'm part of the [Demo scene](https://en.wikipedia.org/wiki/Demoscene) group [Ninjadev](https://www.ninjadev.org/). Here are some of the productions we've made, for different demo scene parties.
