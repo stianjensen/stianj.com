@@ -285,9 +285,23 @@ themes.forEach((t, i) => {
 
 applyTheme(Math.floor(Math.random() * themes.length));
 
-// --- Toolbar: alignment ---
+// --- Toolbar: bold ---
 toolbar.appendChild(Object.assign(document.createElement('div'), { className: 'toolbar-sep' }));
 
+const boldBtn = document.createElement('div');
+boldBtn.className = 'tb-btn';
+boldBtn.innerHTML = `<svg viewBox="0 0 14 14" fill="var(--fg)" stroke="none">
+  <path d="M3 1.5h4.5c1.8 0 3.2 1.2 3.2 2.8 0 1.1-.6 2-1.6 2.5 1.2.4 2.1 1.5 2.1 2.8 0 1.8-1.5 3-3.4 3H3V1.5zM5 6h2.2c.9 0 1.5-.5 1.5-1.3S8.1 3.5 7.2 3.5H5V6zm0 2v3h2.5c1 0 1.6-.6 1.6-1.5S8.5 8 7.5 8H5z"/>
+</svg>`;
+boldBtn.addEventListener('click', () => {
+  const isBold = el.style.fontWeight === 'bold';
+  el.style.fontWeight = isBold ? '' : 'bold';
+  boldBtn.classList.toggle('active', !isBold);
+  requestFit();
+});
+toolbar.appendChild(boldBtn);
+
+// --- Toolbar: alignment ---
 const alignOptions = [
   { value: 'left', svg: '<line x1="1" y1="2" x2="10" y2="2"/><line x1="1" y1="5.5" x2="13" y2="5.5"/><line x1="1" y1="9" x2="8" y2="9"/><line x1="1" y1="12.5" x2="12" y2="12.5"/>' },
   { value: 'center', svg: '<line x1="2" y1="2" x2="12" y2="2"/><line x1="1" y1="5.5" x2="13" y2="5.5"/><line x1="3" y1="9" x2="11" y2="9"/><line x1="1.5" y1="12.5" x2="12.5" y2="12.5"/>' },
@@ -312,6 +326,81 @@ alignOptions.forEach(opt => {
 });
 
 setAlign('left');
+
+// --- Toolbar: rebalance ---
+const rebalanceBtn = document.createElement('div');
+rebalanceBtn.className = 'tb-btn';
+rebalanceBtn.innerHTML = `<svg viewBox="0 0 14 14" stroke="var(--fg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+  <line x1="1" y1="3" x2="12" y2="3"/>
+  <path d="M12 3v3.5a2 2 0 0 1-2 2H4"/>
+  <polyline points="6,6.5 4,8.5 6,10.5"/>
+  <line x1="1" y1="12" x2="8" y2="12"/>
+</svg>`;
+rebalanceBtn.addEventListener('click', () => {
+  if (marqueeActive) return;
+  const raw = el.textContent;
+  const words = raw.replace(/\n/g, ' ').split(/\s+/).filter(w => w);
+  if (words.length <= 1) return;
+
+  const maxLines = Math.min(words.length, 10);
+  let bestSize = 0;
+  let bestText = '';
+
+  for (let n = 1; n <= maxLines; n++) {
+    // Distribute words evenly across n lines by character count
+    const totalChars = words.reduce((s, w) => s + w.length, 0) + words.length - 1;
+    const targetPerLine = totalChars / n;
+    const lines = [];
+    let cur = [];
+    let curLen = 0;
+
+    for (const word of words) {
+      const newLen = curLen + (cur.length > 0 ? 1 : 0) + word.length;
+      if (cur.length > 0 && newLen > targetPerLine && lines.length < n - 1) {
+        lines.push(cur.join(' '));
+        cur = [word];
+        curLen = word.length;
+      } else {
+        cur.push(word);
+        curLen = newLen;
+      }
+    }
+    if (cur.length > 0) lines.push(cur.join(' '));
+
+    const candidate = lines.join('\n');
+    el.textContent = candidate;
+
+    // Binary search for max font size
+    el.style.paddingTop = '16px';
+    let lo = 1, hi = 1000;
+    while (hi - lo > 0.5) {
+      const mid = (lo + hi) / 2;
+      el.style.fontSize = mid + 'px';
+      if (el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight) {
+        hi = mid;
+      } else {
+        lo = mid;
+      }
+    }
+
+    if (lo > bestSize) {
+      bestSize = lo;
+      bestText = candidate;
+    }
+  }
+
+  el.textContent = bestText;
+  fit();
+
+  // Place cursor at end
+  const sel = window.getSelection();
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  range.collapse(false);
+  sel.removeAllRanges();
+  sel.addRange(range);
+});
+toolbar.appendChild(rebalanceBtn);
 
 // --- Toolbar: marquee ---
 toolbar.appendChild(Object.assign(document.createElement('div'), { className: 'toolbar-sep' }));
