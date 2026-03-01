@@ -46,6 +46,16 @@ html, body {
 #text.marquee {
   white-space: nowrap;
   overflow: visible;
+}
+
+#text.marquee.rotated {
+  inset: auto;
+  transform: rotate(90deg);
+  transform-origin: center center;
+}
+
+#marquee-inner {
+  display: inline-block;
   will-change: transform;
 }
 
@@ -68,6 +78,14 @@ html, body {
 
 #toolbar.visible {
   opacity: 1;
+}
+
+#toolbar.rotated {
+  top: auto;
+  bottom: 32px;
+  right: 44px; /* 16px margin + 28px toolbar height */
+  transform: rotate(90deg);
+  transform-origin: bottom right;
 }
 
 .swatch {
@@ -148,18 +166,13 @@ html, body {
 <div id="text" contenteditable="true" spellcheck="false"></div>
 <script>
 const el = document.getElementById('text');
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+const isStandalone = navigator.standalone === true || window.matchMedia('(display-mode: fullscreen)').matches;
 let rafId = null;
 
 function fit() {
   if (marqueeActive) {
-    // Recalculate font size and restart animation during marquee
-    const vh = window.innerHeight;
-    const fontSize = (vh - 32) / 1.15;
-    el.style.fontSize = fontSize + 'px';
-    const contentHeight = fontSize * 1.15;
-    const extra = vh - 32 - contentHeight;
-    el.style.paddingTop = (extra > 0 ? 16 + extra / 2 : 16) + 'px';
-    startMarqueeAnimation();
+    applyMarqueeLayout();
     return;
   }
 
@@ -238,6 +251,7 @@ el.addEventListener('paste', (e) => {
 
 // Re-fit on resize
 new ResizeObserver(requestFit).observe(el);
+addEventListener('resize', requestFit);
 
 // --- Toolbar: themes ---
 const themes = [
@@ -312,30 +326,65 @@ let marqueeActive = false;
 let originalText = null;
 let marqueeRaf = null;
 
+function marqueeLandscape() {
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const portrait = isIOS && vh > vw;
+  return { portrait, landW: portrait ? vh : vw, landH: portrait ? vw : vh };
+}
+
+function applyMarqueeLayout() {
+  const { portrait, landW, landH } = marqueeLandscape();
+  const fontSize = (landH - 32) / 1.15;
+  el.style.fontSize = fontSize + 'px';
+
+  if (portrait) {
+    el.classList.add('rotated');
+    toolbar.classList.add('rotated');
+    el.style.width = landW + 'px';
+    el.style.height = landH + 'px';
+    el.style.top = ((window.innerHeight - landH) / 2) + 'px';
+    el.style.left = ((window.innerWidth - landW) / 2) + 'px';
+  } else {
+    el.classList.remove('rotated');
+    toolbar.classList.remove('rotated');
+    el.style.width = '';
+    el.style.height = '';
+    el.style.top = '';
+    el.style.left = '';
+  }
+
+  const contentHeight = fontSize * 1.15;
+  const extra = landH - 32 - contentHeight;
+  el.style.paddingTop = (extra > 0 ? 16 + extra / 2 : 16) + 'px';
+}
+
 function enterMarquee() {
   originalText = el.textContent;
   const display = originalText.replace(/\n/g, ' \u00b7 ');
-  el.textContent = display;
+
+  el.textContent = '';
+  const span = document.createElement('span');
+  span.id = 'marquee-inner';
+  span.textContent = display;
+  el.appendChild(span);
+
   el.contentEditable = 'false';
   el.classList.add('marquee');
 
-  const vh = window.innerHeight;
-  const fontSize = (vh - 32) / 1.15;
-  el.style.fontSize = fontSize + 'px';
-
-  // Vertical centering
-  const contentHeight = fontSize * 1.15;
-  const extra = vh - 32 - contentHeight;
-  el.style.paddingTop = (extra > 0 ? 16 + extra / 2 : 16) + 'px';
-
+  applyMarqueeLayout();
   startMarqueeAnimation();
 }
 
 function exitMarquee() {
   if (marqueeRaf) cancelAnimationFrame(marqueeRaf);
   marqueeRaf = null;
-  el.classList.remove('marquee');
-  el.style.transform = '';
+  el.classList.remove('marquee', 'rotated');
+  toolbar.classList.remove('rotated');
+  el.style.width = '';
+  el.style.height = '';
+  el.style.top = '';
+  el.style.left = '';
   el.textContent = originalText;
   originalText = null;
   el.contentEditable = 'true';
@@ -345,8 +394,12 @@ function exitMarquee() {
 
 function startMarqueeAnimation() {
   if (marqueeRaf) cancelAnimationFrame(marqueeRaf);
+  const span = document.getElementById('marquee-inner');
+  if (!span) return;
+
   const speed = 400; // px/s
-  let scrollX = window.innerWidth;
+  const { landW } = marqueeLandscape();
+  let scrollX = landW;
   let lastTime = null;
   let pausing = false;
 
@@ -358,14 +411,15 @@ function startMarqueeAnimation() {
 
     if (!pausing) {
       scrollX -= speed * dt;
-      el.style.transform = `translateX(${scrollX}px)`;
-      const textWidth = el.scrollWidth;
+      span.style.transform = `translateX(${scrollX}px)`;
+      const textWidth = span.offsetWidth;
       if (scrollX < -textWidth) {
         pausing = true;
-        el.style.transform = `translateX(${window.innerWidth}px)`;
+        const { landW: lw } = marqueeLandscape();
+        span.style.transform = `translateX(${lw}px)`;
         setTimeout(() => {
           if (!marqueeActive) return;
-          scrollX = window.innerWidth;
+          scrollX = lw;
           pausing = false;
           lastTime = null;
           marqueeRaf = requestAnimationFrame(tick);
@@ -403,9 +457,6 @@ function showToast(msg, duration = 3000) {
 }
 
 // --- Toolbar: fullscreen ---
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-const isStandalone = navigator.standalone === true || window.matchMedia('(display-mode: fullscreen)').matches;
-
 if (!(isIOS && isStandalone)) {
 toolbar.appendChild(Object.assign(document.createElement('div'), { className: 'toolbar-sep' }));
 

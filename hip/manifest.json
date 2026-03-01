@@ -3,6 +3,7 @@
   "short_name": "hip.",
   "start_url": ".",
   "display": "fullscreen",
+  "orientation": "portrait",
   "background_color": "#0f0f11",
   "theme_color": "#0f0f11"
 }
