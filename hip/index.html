@@ -35,6 +35,11 @@ html, body {
   caret-color: var(--fg);
 }
 
+#text.hide-caret {
+  caret-color: transparent;
+  cursor: none;
+}
+
 #text:empty::before {
   content: "Type something";
   color: var(--fg);
@@ -79,7 +84,7 @@ html, body {
   margin: 2px 4px;
 }
 
-.align-btn {
+.tb-btn {
   width: 28px;
   height: 28px;
   border-radius: 6px;
@@ -92,15 +97,15 @@ html, body {
   transition: transform 0.15s, border-color 0.15s;
 }
 
-.align-btn:hover {
+.tb-btn:hover {
   transform: scale(1.2);
 }
 
-.align-btn.active {
+.tb-btn.active {
   border-color: var(--fg);
 }
 
-.align-btn svg {
+.tb-btn svg {
   width: 14px;
   height: 14px;
 }
@@ -220,16 +225,15 @@ themes.forEach((t, i) => {
   toolbar.appendChild(s);
 });
 
-applyTheme(0);
+applyTheme(Math.floor(Math.random() * themes.length));
 
 // --- Toolbar: alignment ---
-const sep = document.createElement('div');
-sep.className = 'toolbar-sep';
-toolbar.appendChild(sep);
+toolbar.appendChild(Object.assign(document.createElement('div'), { className: 'toolbar-sep' }));
 
 const alignOptions = [
   { value: 'left', svg: '<line x1="1" y1="2" x2="10" y2="2"/><line x1="1" y1="5.5" x2="13" y2="5.5"/><line x1="1" y1="9" x2="8" y2="9"/><line x1="1" y1="12.5" x2="12" y2="12.5"/>' },
   { value: 'center', svg: '<line x1="2" y1="2" x2="12" y2="2"/><line x1="1" y1="5.5" x2="13" y2="5.5"/><line x1="3" y1="9" x2="11" y2="9"/><line x1="1.5" y1="12.5" x2="12.5" y2="12.5"/>' },
+  { value: 'right', svg: '<line x1="4" y1="2" x2="13" y2="2"/><line x1="1" y1="5.5" x2="13" y2="5.5"/><line x1="6" y1="9" x2="13" y2="9"/><line x1="2" y1="12.5" x2="13" y2="12.5"/>' },
 ];
 
 function setAlign(value) {
@@ -242,7 +246,7 @@ function setAlign(value) {
 
 alignOptions.forEach(opt => {
   const btn = document.createElement('div');
-  btn.className = 'align-btn';
+  btn.className = 'tb-btn align-btn';
   btn.dataset.align = opt.value;
   btn.innerHTML = `<svg viewBox="0 0 14 14" stroke="var(--fg)" stroke-width="1.5" stroke-linecap="round">${opt.svg}</svg>`;
   btn.addEventListener('click', () => setAlign(opt.value));
@@ -251,6 +255,24 @@ alignOptions.forEach(opt => {
 
 setAlign('left');
 
+// --- Toolbar: fullscreen ---
+toolbar.appendChild(Object.assign(document.createElement('div'), { className: 'toolbar-sep' }));
+
+const fsBtn = document.createElement('div');
+fsBtn.className = 'tb-btn';
+fsBtn.innerHTML = `<svg viewBox="0 0 14 14" stroke="var(--fg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+  <polyline points="1,5 1,1 5,1"/><polyline points="9,1 13,1 13,5"/>
+  <polyline points="13,9 13,13 9,13"/><polyline points="5,13 1,13 1,9"/>
+</svg>`;
+fsBtn.addEventListener('click', () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+});
+toolbar.appendChild(fsBtn);
+
 // --- Toolbar: show/hide on mouse movement ---
 let fadeTimer;
 addEventListener('mousemove', () => {
@@ -258,6 +280,17 @@ addEventListener('mousemove', () => {
   clearTimeout(fadeTimer);
   fadeTimer = setTimeout(() => toolbar.classList.remove('visible'), 1500);
 });
+
+// --- Hide caret after inactivity ---
+let caretTimer;
+function showCaret() {
+  el.classList.remove('hide-caret');
+  clearTimeout(caretTimer);
+  caretTimer = setTimeout(() => el.classList.add('hide-caret'), 3000);
+}
+el.addEventListener('keydown', showCaret);
+el.addEventListener('mousedown', showCaret);
+el.addEventListener('mousemove', showCaret);
 
 // Initial focus
 el.focus();
