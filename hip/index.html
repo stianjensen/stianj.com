@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
 <title>hip.</title>
 <style>
 *, *::before, *::after {
@@ -38,6 +41,12 @@ html, body {
 #text.hide-caret {
   caret-color: transparent;
   cursor: none;
+}
+
+#text.marquee {
+  white-space: nowrap;
+  overflow: visible;
+  will-change: transform;
 }
 
 #text:empty::before {
@@ -109,16 +118,51 @@ html, body {
   width: 14px;
   height: 14px;
 }
+
+#toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--fg);
+  color: var(--bg);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 20;
+  pointer-events: none;
+  text-align: center;
+}
+
+#toast.visible {
+  opacity: 1;
+}
 </style>
 </head>
 <body>
 <div id="toolbar"></div>
+<div id="toast"></div>
 <div id="text" contenteditable="true" spellcheck="false"></div>
 <script>
 const el = document.getElementById('text');
 let rafId = null;
 
 function fit() {
+  if (marqueeActive) {
+    // Recalculate font size and restart animation during marquee
+    const vh = window.innerHeight;
+    const fontSize = (vh - 32) / 1.15;
+    el.style.fontSize = fontSize + 'px';
+    const contentHeight = fontSize * 1.15;
+    const extra = vh - 32 - contentHeight;
+    el.style.paddingTop = (extra > 0 ? 16 + extra / 2 : 16) + 'px';
+    startMarqueeAnimation();
+    return;
+  }
+
   // Use textContent to measure — ignore empty trailing newline
   const raw = el.textContent;
   const text = raw || 'X'; // fallback for measurement when empty
@@ -255,7 +299,114 @@ alignOptions.forEach(opt => {
 
 setAlign('left');
 
+// --- Toolbar: marquee ---
+toolbar.appendChild(Object.assign(document.createElement('div'), { className: 'toolbar-sep' }));
+
+const marqueeBtn = document.createElement('div');
+marqueeBtn.className = 'tb-btn';
+marqueeBtn.innerHTML = `<svg viewBox="0 0 14 14" fill="var(--fg)" stroke="none">
+  <polygon points="3,1 13,7 3,13"/>
+</svg>`;
+
+let marqueeActive = false;
+let originalText = null;
+let marqueeRaf = null;
+
+function enterMarquee() {
+  originalText = el.textContent;
+  const display = originalText.replace(/\n/g, ' \u00b7 ');
+  el.textContent = display;
+  el.contentEditable = 'false';
+  el.classList.add('marquee');
+
+  const vh = window.innerHeight;
+  const fontSize = (vh - 32) / 1.15;
+  el.style.fontSize = fontSize + 'px';
+
+  // Vertical centering
+  const contentHeight = fontSize * 1.15;
+  const extra = vh - 32 - contentHeight;
+  el.style.paddingTop = (extra > 0 ? 16 + extra / 2 : 16) + 'px';
+
+  startMarqueeAnimation();
+}
+
+function exitMarquee() {
+  if (marqueeRaf) cancelAnimationFrame(marqueeRaf);
+  marqueeRaf = null;
+  el.classList.remove('marquee');
+  el.style.transform = '';
+  el.textContent = originalText;
+  originalText = null;
+  el.contentEditable = 'true';
+  fit();
+  el.focus();
+}
+
+function startMarqueeAnimation() {
+  if (marqueeRaf) cancelAnimationFrame(marqueeRaf);
+  const speed = 400; // px/s
+  let scrollX = window.innerWidth;
+  let lastTime = null;
+  let pausing = false;
+
+  function tick(ts) {
+    if (!marqueeActive) return;
+    if (lastTime === null) lastTime = ts;
+    const dt = (ts - lastTime) / 1000;
+    lastTime = ts;
+
+    if (!pausing) {
+      scrollX -= speed * dt;
+      el.style.transform = `translateX(${scrollX}px)`;
+      const textWidth = el.scrollWidth;
+      if (scrollX < -textWidth) {
+        pausing = true;
+        el.style.transform = `translateX(${window.innerWidth}px)`;
+        setTimeout(() => {
+          if (!marqueeActive) return;
+          scrollX = window.innerWidth;
+          pausing = false;
+          lastTime = null;
+          marqueeRaf = requestAnimationFrame(tick);
+        }, 1000);
+        return;
+      }
+    }
+    marqueeRaf = requestAnimationFrame(tick);
+  }
+  marqueeRaf = requestAnimationFrame(tick);
+}
+
+function toggleMarquee() {
+  if (!marqueeActive && !el.textContent.trim()) return;
+  marqueeActive = !marqueeActive;
+  marqueeBtn.classList.toggle('active', marqueeActive);
+  if (marqueeActive) {
+    enterMarquee();
+  } else {
+    exitMarquee();
+  }
+}
+
+marqueeBtn.addEventListener('click', toggleMarquee);
+toolbar.appendChild(marqueeBtn);
+
+// --- Toast ---
+const toast = document.getElementById('toast');
+let toastTimer;
+function showToast(msg, duration = 3000) {
+  toast.textContent = msg;
+  toast.classList.add('visible');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('visible'), duration);
+}
+
 // --- Toolbar: fullscreen ---
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+const isStandalone = navigator.standalone === true || window.matchMedia('(display-mode: fullscreen)').matches;
+
+if (!(isIOS && isStandalone)) {
 toolbar.appendChild(Object.assign(document.createElement('div'), { className: 'toolbar-sep' }));
 
 const fsBtn = document.createElement('div');
@@ -265,21 +416,30 @@ fsBtn.innerHTML = `<svg viewBox="0 0 14 14" stroke="var(--fg)" stroke-width="1.5
   <polyline points="13,9 13,13 9,13"/><polyline points="5,13 1,13 1,9"/>
 </svg>`;
 fsBtn.addEventListener('click', () => {
+  if (isIOS && !isStandalone) {
+    showToast('Add to Home Screen for fullscreen', 3500);
+    return;
+  }
   if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen();
+    document.documentElement.requestFullscreen().catch(() => {
+      showToast('Fullscreen not supported');
+    });
   } else {
     document.exitFullscreen();
   }
 });
 toolbar.appendChild(fsBtn);
+} // end fullscreen (hidden when iOS standalone)
 
 // --- Toolbar: show/hide on mouse movement ---
 let fadeTimer;
-addEventListener('mousemove', () => {
+function showToolbar() {
   toolbar.classList.add('visible');
   clearTimeout(fadeTimer);
   fadeTimer = setTimeout(() => toolbar.classList.remove('visible'), 1500);
-});
+}
+addEventListener('mousemove', showToolbar);
+addEventListener('touchstart', showToolbar);
 
 // --- Hide caret after inactivity ---
 let caretTimer;
