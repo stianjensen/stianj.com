@@ -43,9 +43,7 @@
 }
 
 a[class^="icon-"],
-a[class*=" icon-"],
-a[class^="icon-"]::before,
-a[class*=" icon-"]::before {
+a[class*=" icon-"] {
     text-decoration: none;
     -webkit-transition: all .1s ease;
     -moz-transition: all .1s ease;
@@ -53,9 +51,7 @@ a[class*=" icon-"]::before {
 
 }
 a[class^="icon-"]:hover,
-a[class*=" icon-"]:hover,
-a[class^="icon-"]:hover::before,
-a[class*=" icon-"]:hover::before {
+a[class*=" icon-"]:hover {
         -webkit-transform: scale(1.4, 1.4);
         -moz-transform: scale(1.4, 1.4);
         -ms-transform: scale(1.4, 1.4);
