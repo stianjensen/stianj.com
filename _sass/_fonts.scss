@@ -40,16 +40,16 @@
     font-size: 200%;
     /* Uncomment for 3D effect */
     /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
-}  
-   
+}
+
 a[class^="icon-"]::before,
 a[class*=" icon-"]::before {
     text-decoration: none;
     -webkit-transition: all .1s ease;
     -moz-transition: all .1s ease;
     transition: all .1s ease;
-   
-}  
+
+}
 a[class^="icon-"]:hover::before,
 a[class*=" icon-"]:hover::before {
         -webkit-transform: scale(1.4, 1.4);
@@ -57,9 +57,8 @@ a[class*=" icon-"]:hover::before {
         -ms-transform: scale(1.4, 1.4);
         -o-transform: scale(1.4, 1.4);
         transform: scale(1.4, 1.4);
-} 
+}
 
 .icon-facebook:before { content: '\f301'; } /* '' */
-.icon-twitter:before { content: '\f303'; } /* '' */
 .icon-github:before { content: '\f308'; } /* '' */
 .icon-linkedin:before { content: '\f31b'; } /* '' */
