@@ -14,6 +14,11 @@
       description: "Compendiums edited as a wiki. Available for free and used by lots of NTNU students."
       link: "https://www.wikipendium.no"
 
+    - title: "hip."
+      image: "images/hip_preview@200px.png"
+      description: "For displaying large type in the browser."
+      link: "https://hip.stianj.com/"
+
     - title: "Composite"
       image: "images/composite_preview@200px.jpg"
       description: "Interactive prototypes straight from Photoshop to your iPhone."
@@ -111,15 +116,10 @@
       description: "Check if the weather is good enough to wear shorts today."
       link: "https://shortsdag.no/"
 
-    - title: "hip."
-      image: "images/hip_preview@200px.png"
-      description: "For displaying large type in the browser."
-      link: "https://hip.stianj.com/"
-
     - title: "Change Places"
       image: "images/changeplaces_preview@200px.png"
       description: "A simple web-app with a repeating timer. Made for extreme programming where people get 5 minutes each to work on the computer."
-      link: "http://changeplac.es"
+      link: "https://stianjensen.github.io/changeplac.es/"
 
     - title: "Guide to DataGK [no]"
       image: "images/datagk_preview@200px.png"
